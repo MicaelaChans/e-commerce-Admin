@@ -1,26 +1,66 @@
-.home{
-    position: absolute;
-    top: 0;
-    top: 0;
-    left: 250px;
-    height: 100vh;
-    width: calc(100% - 250px);
-    background-color: var(--body-color);
-    transition: var(--tran-05);
+.home {
+  position: absolute;
+  top: 0;
+  top: 0;
+  left: 250px;
+  height: 100vh;
+  width: calc(100% - 250px);
+  background-color: var(--body-color);
+  transition: var(--tran-05);
 }
-.home .text{
-    font-size: 30px;
-    font-weight: 500;
-    color: var(--text-color);
-    padding: 12px 60px;
+.home .text {
+  font-size: 30px;
+  font-weight: 500;
+  color: var(--text-color);
+  padding: 12px 60px;
 }
 
-.chart-productos{
-    width: 420px;
-    height: 320px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: rgba(255, 255, 255, .15);  
-    backdrop-filter: blur(5px);
+.chart-productos {
+  width: 420px;
+  height: 320px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(5px);
+}
+
+#colAdd {
+  background-color: aquamarine;
+  color: black;
+  padding: 10px;
+}
+#colUpdate {
+  background-color: pink;
+  color: black;
+  padding: 10px;
+}
+#colRemove {
+  background-color: rgb(255, 255, 156);
+  color: black;
+  padding: 10px;
+}
+#colDelivered {
+  background-color: rgb(167, 250, 250);
+  color: black;
+  padding: 10px;
+}
+#colOnTheWay {
+  background-color: rgb(227, 195, 253);
+  color: black;
+  padding: 10px;
+}
+#colPeid {
+  background-color: bisque;
+  color: black;
+  padding: 10px;
+}
+#colNotPeid {
+  background-color: rgb(145, 252, 179);
+  color: black;
+  padding: 10px;
+}
+
+ul {
+  list-style-type: none;
 }
