@@ -3,7 +3,7 @@ import React from "react";
 function Order() {
   return (
     <>
-      <div className="container mt-3">
+      <div className="container mt-3 text-center">
         <h2>Orders</h2>
         <div className="row mt-3 gap-3 justify-content-center">
           <div className="col-3" id="colAdd">

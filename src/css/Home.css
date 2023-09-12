@@ -106,3 +106,7 @@ body {
 ul{
     padding: 0;
 }
+
+.letters{
+    color: var(--text-color);
+}
