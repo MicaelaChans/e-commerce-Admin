@@ -25,38 +25,49 @@
   backdrop-filter: blur(5px);
 }
 
+.bg {
+  width: 420px;
+  height: 320px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(5px);
+  border-radius: 5px;
+}
+
 #colAdd {
-  background-color: aquamarine;
+  background-color: #7fffd4;
   color: black;
   padding: 10px;
 }
 #colUpdate {
-  background-color: pink;
+  background-color: #ffff9c;
   color: black;
   padding: 10px;
 }
 #colRemove {
-  background-color: rgb(255, 255, 156);
+  background-color: #ffc0cb;
   color: black;
   padding: 10px;
 }
 #colDelivered {
-  background-color: rgb(167, 250, 250);
+  background-color: #a7fafa;
   color: black;
   padding: 10px;
 }
 #colOnTheWay {
-  background-color: rgb(227, 195, 253);
+  background-color: #e3c3fd;
   color: black;
   padding: 10px;
 }
 #colPeid {
-  background-color: bisque;
+  background-color: #91fcb3;
   color: black;
   padding: 10px;
 }
 #colNotPeid {
-  background-color: rgb(145, 252, 179);
+  background-color: #ffe4c4;
   color: black;
   padding: 10px;
 }

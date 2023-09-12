@@ -3,54 +3,54 @@ import React from "react";
 function Order() {
   return (
     <>
-      <div className="container mt-3 ">
+      <div className="container mt-3">
         <h2>Orders</h2>
-        <div className="row mt-3 gap-3 d-flex">
-          <div className="col-4" id="colAdd">
+        <div className="row mt-3 gap-3 justify-content-center">
+          <div className="col-3" id="colAdd">
             <h4>
-              Add <i class="bi bi-bag-plus-fill"></i>
+              Add <i className="bi bi-bag-plus-fill"></i>
             </h4>
           </div>
-          <div className="col-4" id="colUpdate">
+          <div className="col-3" id="colUpdate">
             <h4>
-              Update <i class="bx bx-edit-alt bx-fade-right"></i>
+              Update <i className="bx bx-edit-alt bx-fade-right"></i>
             </h4>
           </div>
-          <div className="col-4" id="colRemove">
+          <div className="col-3" id="colRemove">
             <h4>
-              Remove <i class="bi bi-trash3"></i>
+              Remove <i className="bi bi-trash3"></i>
             </h4>
           </div>
         </div>
 
-        <div className="row mt-3 gap-3 d-flex">
-          <div className="col-3" id="colDelivered">
+        <div className="row mt-3 gap-3 justify-content-center">
+          <div className="col-2" id="colDelivered">
             <h4>
-              Delivered <i class="bi bi-box2-heart"></i>
+              Delivered <i className="bi bi-box2-heart"></i>
             </h4>
             <ul>
               <li>1</li>
             </ul>
           </div>
-          <div className="col-3" id="colOnTheWay">
+          <div className="col-2" id="colOnTheWay">
             <h4>
-              On the way <i class="bx bx-run bx-fade-right"></i>
+              On the way <i className="bx bx-run bx-fade-right"></i>
             </h4>
             <ul>
               <li>1</li>
             </ul>
           </div>
-          <div className="col-3" id="colPeid">
+          <div className="col-2" id="colPeid">
             <h4>
-              Peid <i class="bi bi-credit-card"></i>
+              Peid <i className="bi bi-credit-card"></i>
             </h4>
             <ul>
               <li>1</li>
             </ul>
           </div>
-          <div className="col-3" id="colNotPeid">
+          <div className="col-2" id="colNotPeid">
             <h4>
-              Not Peid <i class="bi bi-cash-coin"></i>
+              Not Peid <i className="bi bi-cash-coin"></i>
             </h4>
             <ul>
               <li>1</li>
