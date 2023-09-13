@@ -27,7 +27,7 @@ function Home() {
                       <p>Increased by 60%</p>
                     </div>
                   </div>
-                  <div className="col-4 imgbg hop">
+                  <div className="col-4 hop">
                     <div className="bg2 rounded flex-column">
                       <h5>Weekly Orders</h5>
                       <h3>$ 45,6334</h3>

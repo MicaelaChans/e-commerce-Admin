@@ -8,10 +8,6 @@
   backdrop-filter: blur(5px);
 }
 
-.imgbg {
-  background-image: url("../assets/bg-2.svg");
-}
-
 .bg {
   width: 420px;
   height: 220px;
