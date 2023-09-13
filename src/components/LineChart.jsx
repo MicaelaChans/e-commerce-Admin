@@ -14,7 +14,7 @@ function LineCharts() {
             color: "#91fcb3",
           },
         ]}
-        width={500}
+        width={1200}
         height={300}
       />
     </div>
