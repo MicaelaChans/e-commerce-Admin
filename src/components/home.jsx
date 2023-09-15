@@ -4,7 +4,7 @@ import "../css/Sidebar.css";
 import PieCharts from "./PieChart";
 import LineCharts from "./LineChart";
 import Barcharts from "./BarCharts";
-import Order from "./Order";
+import OrderStatus from "./OrderStatus";
 import "../css/Charts.css";
 
 function Home() {
@@ -60,7 +60,7 @@ function Home() {
               <div className="container mt-3 pb-5">
                 <div className="row">
                   <div className="col-4"></div>
-                  <Order />
+                  <OrderStatus />
                 </div>
               </div>
             </div>
