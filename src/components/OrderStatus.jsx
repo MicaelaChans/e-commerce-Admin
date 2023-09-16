@@ -1,12 +1,13 @@
 import React from "react";
+import "../css/OrderStatus.css";
 
 function OrderStatus() {
   return (
     <>
-      <div className="container mt-3 text-center">
+      <div className="containerTable mt-3 text-center">
         <h2>Orders</h2>
       </div>
-      <table className="table mt-3 hop">
+      <table className="table table-dark table-hover mt-3 hop">
         <thead>
           <tr>
             <th scope="col">#</th>
@@ -23,14 +24,10 @@ function OrderStatus() {
             <td>
               Entregado
               <div
-                className="progress"
+                className="progress bgG"
                 role="progressbar"
                 aria-valuenow="25"
-                aria-valuemin="0"
-                aria-valuemax="100"
-              >
-                <div className="progress-bar"></div>
-              </div>
+              ></div>
             </td>
           </tr>
           <tr>
@@ -38,17 +35,12 @@ function OrderStatus() {
             <td>Jacob</td>
             <td>Jul 01, 2023</td>
             <td>
-              En Camino{" "}
+              En Camino
               <div
-                className="progress"
+                className="progress bgY"
                 role="progressbar"
-                aria-label="Success example"
                 aria-valuenow="25"
-                aria-valuemin="0"
-                aria-valuemax="100"
-              >
-                <div className="progress-bar"></div>
-              </div>
+              ></div>
             </td>
           </tr>
           <tr>
@@ -56,17 +48,12 @@ function OrderStatus() {
             <td>Larry </td>
             <td>Abr 12, 2023</td>
             <td>
-              Pagado{" "}
+              Pagado
               <div
-                className="progress"
+                className="progress bgP"
                 role="progressbar"
-                aria-label="Success example"
                 aria-valuenow="25"
-                aria-valuemin="0"
-                aria-valuemax="100"
-              >
-                <div className="progress-bar"></div>
-              </div>
+              ></div>
             </td>
           </tr>
           <tr>
@@ -76,15 +63,10 @@ function OrderStatus() {
             <td>
               Sin pagar{" "}
               <div
-                className="progress"
+                className="progress bgR"
                 role="progressbar"
-                aria-label="Success example"
                 aria-valuenow="25"
-                aria-valuemin="0"
-                aria-valuemax="100"
-              >
-                <div className="progress-bar"></div>
-              </div>
+              ></div>
             </td>
           </tr>
         </tbody>
