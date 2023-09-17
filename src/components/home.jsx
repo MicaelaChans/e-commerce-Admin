@@ -1,3 +1,9 @@
+import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
+// import { logout } from "../redux/userSlice";
+// import { useDispatch } from "react-redux";
+
 import "../css/Home.css";
 import Sidebar from "../components/SideBar";
 import "../css/Sidebar.css";
@@ -8,52 +14,67 @@ import OrderStatus from "./OrderStatus";
 import "../css/Charts.css";
 
 function Home() {
+  const navigate = useNavigate();
+  const user = useSelector((state) => state.user);
+  //const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (!user) return navigate("/login");
+  });
+
+  // const handleLogout = () => {
+  //   dispatch(logout());
+  //   navigate("/login");
+  // };
+  
   return (
     <>
-      <div className="container ">
-        <Sidebar />
-        <section className="home">
-          <div className="text">Dashboard - Drachen</div>
+      {user && (
+        <div className="container ">
+          <Sidebar />
+          <section className="home">
+            <div className="text">Dashboard - Drachen</div>
 
-          <div className="container letters">
-            <div className="row">
-              <div className="container mt-3">
-                <h2 className="mt-3 text-center">Revenue</h2>
-                <div className="row mt-3">
-                  <div className="col-4 hop">
-                    <div className="bg rounded flex-column">
-                      <h5>Weekly Sales</h5>
-                      <h3>$ 15,000</h3>
-                      <p>Increased by 60%</p>
+            <div className="container letters">
+              <div className="row">
+                <div className="container mt-3">
+                  <h2 className="mt-3 text-center">Revenue</h2>
+                  <div className="row mt-3">
+                    <div className="col-4 hop">
+                      <div className="bg rounded flex-column">
+                        <h5>Weekly Sales</h5>
+                        <h3>$ 15,000</h3>
+                        <p>Increased by 60%</p>
+                      </div>
                     </div>
-                  </div>
-                  <div className="col-4 hop">
-                    <div className="bg2 rounded flex-column">
-                      <h5>Weekly Orders</h5>
-                      <h3>$ 45,6334</h3>
-                      <p>Decreased by 10%</p>
+                    <div className="col-4 hop">
+                      <div className="bg2 rounded flex-column">
+                        <h5>Weekly Orders</h5>
+                        <h3>$ 45,6334</h3>
+                        <p>Decreased by 10%</p>
+                      </div>
                     </div>
-                  </div>
-                  <div className="col-4 hop">
-                    <div className="bg3 rounded flex-column">
-                      <h5>Visitors Online</h5>
-                      <h3>$ 95,5741</h3>
-                      <p>Increased by 5%</p>
+                    <div className="col-4 hop">
+                      <div className="bg3 rounded flex-column">
+                        <h5>Visitors Online</h5>
+                        <h3>$ 95,5741</h3>
+                        <p>Increased by 5%</p>
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
-              <div className="container mt-3">
-                <h2 className="mt-3 text-center">Analytics</h2>
-                <div className="row mt-3">
-                  <div className="col-4 mt-3 hop">
-                    <PieCharts />
-                  </div>
-                  <div className="col-8 mt-3 hop">
-                    <Barcharts />
-                  </div>
-                  <div className="col-12 mt-4 hop">
-                    <LineCharts />
+                <div className="container mt-3">
+                  <h2 className="mt-3 text-center">Analytics</h2>
+                  <div className="row mt-3">
+                    <div className="col-4 mt-3 hop">
+                      <PieCharts />
+                    </div>
+                    <div className="col-8 mt-3 hop">
+                      <Barcharts />
+                    </div>
+                    <div className="col-12 mt-4 hop">
+                      <LineCharts />
+                    </div>
                   </div>
                 </div>
               </div>
@@ -64,9 +85,9 @@ function Home() {
                 </div>
               </div>
             </div>
-          </div>
-        </section>
-      </div>
+          </section>
+        </div>
+      )}
     </>
   );
 }

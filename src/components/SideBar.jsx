@@ -11,6 +11,7 @@ function Sidebar() {
   // const toggleDarkMode = () => {
   // 	setIsDarkMode(!isDarkMode);
   // };
+  
 
   return (
     <nav className={`sidebar ${isSidebarOpen ? "close" : ""}`}>
@@ -79,7 +80,7 @@ function Sidebar() {
 
         <div className="bottom-content">
           <li className="">
-            <a href="#">
+            <a onClick={""}>
               <i className="bx bx-log-out icon"></i>
               <span className="text nav-text">Logout</span>
             </a>
