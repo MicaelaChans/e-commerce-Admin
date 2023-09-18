@@ -52,6 +52,7 @@ function Login() {
 
   return (
     <>
+      <ToastContainer position="top-right" />
       <div className="container_login">
         <div className="form-box">
           <div className="form-value">

@@ -9,6 +9,8 @@ import LineCharts from "./LineChart";
 import Barcharts from "./BarCharts";
 import OrderStatus from "./OrderStatus";
 import "../css/Charts.css";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function Home() {
   const navigate = useNavigate();
@@ -75,6 +77,7 @@ function Home() {
                   <OrderStatus />
                 </div>
               </div>
+              <ToastContainer position="top-right" />
             </div>
           </section>
         </div>
