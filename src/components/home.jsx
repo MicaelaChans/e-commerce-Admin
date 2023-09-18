@@ -20,7 +20,7 @@ function Home() {
 
   return (
     <>
-      {admin && (
+      {admin && ( console.log(admin),
         <div className="container ">
           <Sidebar />
           <section className="home">
