@@ -16,7 +16,7 @@ function Sidebar() {
   const dispatch = useDispatch();
 
   const handleLogout = () => {
-    dispatch(logout());
+    dispatch(logout(null));
     navigate("/login");
   };
 
@@ -91,7 +91,10 @@ function Sidebar() {
 
         <div className="bottom-content">
           <li className="">
-            <NavLink onClick={handleLogout} className="text-decoration-none">
+            <NavLink
+              onClick={() => handleLogout()}
+              className="text-decoration-none"
+            >
               <i className="bx bx-log-out icon"></i>
               <span className="text nav-text">Logout</span>
             </NavLink>
