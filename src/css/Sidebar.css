@@ -134,7 +134,7 @@ header .image-text .profession {
   font-weight: 500;
   transition: var(--tran-05);
 }
-.sidebar li Link {
+.sidebar li #a {
   list-style: none;
   height: 100%;
   background-color: transparent;
@@ -147,12 +147,12 @@ header .image-text .profession {
   transition: var(--tran-03);
 }
 
-.sidebar li NavLink:hover {
+.sidebar li #a:hover {
   background-color: var(--primary-color);
 }
 
-.sidebar li NavLink:hover .icon,
-.sidebar li NavLink:hover .text {
+.sidebar li #a:hover .icon,
+.sidebar li #a:hover .text {
   color: var(--sidebar-color);
 }
 

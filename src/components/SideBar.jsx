@@ -54,36 +54,46 @@ function Sidebar() {
           <ul className="menu-links">
             <li className="nav-link">
               <NavLink to="#" className="text-decoration-none">
-                <i className="bx bx-home-alt icon"></i>
-                <span className="text nav-text">Dashboard</span>
+                <div id="a">
+                  <i className="bx bx-home-alt icon"></i>
+                  <span className="text nav-text">Dashboard</span>
+                </div>
               </NavLink>
             </li>
 
             <li className="nav-link">
               <NavLink to="#" className="text-decoration-none">
-                <i className="bx bx-bar-chart-alt-2 icon"></i>
-                <span className="text nav-text">Revenue</span>
+                <div id="a">
+                  <i className="bx bx-bar-chart-alt-2 icon"></i>
+                  <span className="text nav-text">Revenue</span>
+                </div>
               </NavLink>
             </li>
 
             <li className="nav-link">
               <NavLink to="#" className="text-decoration-none">
-                <i className="bx bx-bell icon bx-tada-hover"></i>
-                <span className="text nav-text">Notifications</span>
+                <div id="a">
+                  <i className="bx bx-bell icon bx-tada-hover"></i>
+                  <span className="text nav-text">Notifications</span>
+                </div>
               </NavLink>
             </li>
 
             <li className="nav-link">
               <NavLink to="#" className="text-decoration-none">
-                <i className="bx bx-pie-chart-alt icon"></i>
-                <span className="text nav-text">Analytics</span>
+                <div id="a">
+                  <i className="bx bx-pie-chart-alt icon"></i>
+                  <span className="text nav-text">Analytics</span>
+                </div>
               </NavLink>
             </li>
 
             <li className="nav-link">
               <NavLink to="#" className="text-decoration-none">
-                <i className="bx bx-package icon"></i>
-                <span className="text nav-text">Orders</span>
+                <div id="a">
+                  <i className="bx bx-package icon"></i>
+                  <span className="text nav-text">Orders</span>
+                </div>
               </NavLink>
             </li>
           </ul>
@@ -95,8 +105,10 @@ function Sidebar() {
               onClick={() => handleLogout()}
               className="text-decoration-none"
             >
-              <i className="bx bx-log-out icon"></i>
-              <span className="text nav-text">Logout</span>
+              <div id="a">
+                <i className="bx bx-log-out icon"></i>
+                <span className="text nav-text">Logout</span>
+              </div>
             </NavLink>
           </li>
 
