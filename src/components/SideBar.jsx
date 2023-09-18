@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { logout } from "../redux/adminSlice";
 import { useDispatch } from "react-redux";
@@ -53,48 +53,48 @@ function Sidebar() {
 
           <ul className="menu-links">
             <li className="nav-link">
-              <Link to="#">
+              <NavLink to="#" className="text-decoration-none">
                 <i className="bx bx-home-alt icon"></i>
                 <span className="text nav-text">Dashboard</span>
-              </Link>
+              </NavLink>
             </li>
 
             <li className="nav-link">
-              <Link to="#">
+              <NavLink to="#" className="text-decoration-none">
                 <i className="bx bx-bar-chart-alt-2 icon"></i>
                 <span className="text nav-text">Revenue</span>
-              </Link>
+              </NavLink>
             </li>
 
             <li className="nav-link">
-              <Link to="#">
+              <NavLink to="#" className="text-decoration-none">
                 <i className="bx bx-bell icon bx-tada-hover"></i>
                 <span className="text nav-text">Notifications</span>
-              </Link>
+              </NavLink>
             </li>
 
             <li className="nav-link">
-              <Link to="#">
+              <NavLink to="#" className="text-decoration-none">
                 <i className="bx bx-pie-chart-alt icon"></i>
                 <span className="text nav-text">Analytics</span>
-              </Link>
+              </NavLink>
             </li>
 
             <li className="nav-link">
-              <Link to="#">
+              <NavLink to="#" className="text-decoration-none">
                 <i className="bx bx-package icon"></i>
                 <span className="text nav-text">Orders</span>
-              </Link>
+              </NavLink>
             </li>
           </ul>
         </div>
 
         <div className="bottom-content">
           <li className="">
-            <Link onClick={handleLogout}>
+            <NavLink onClick={handleLogout} className="text-decoration-none">
               <i className="bx bx-log-out icon"></i>
               <span className="text nav-text">Logout</span>
-            </Link>
+            </NavLink>
           </li>
 
           {/* <li className="mode" onClick={toggleDarkMode}>

@@ -147,12 +147,12 @@ header .image-text .profession {
   transition: var(--tran-03);
 }
 
-.sidebar li Link:hover {
+.sidebar li NavLink:hover {
   background-color: var(--primary-color);
 }
 
-.sidebar li Link:hover .icon,
-.sidebar li Link:hover .text {
+.sidebar li NavLink:hover .icon,
+.sidebar li NavLink:hover .text {
   color: var(--sidebar-color);
 }
 
