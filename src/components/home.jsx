@@ -1,9 +1,6 @@
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
-// import { logout } from "../redux/userSlice";
-// import { useDispatch } from "react-redux";
-
 import "../css/Home.css";
 import Sidebar from "../components/SideBar";
 import "../css/Sidebar.css";
@@ -15,21 +12,15 @@ import "../css/Charts.css";
 
 function Home() {
   const navigate = useNavigate();
-  const user = useSelector((state) => state.user);
-  //const dispatch = useDispatch();
+  const admin = useSelector((state) => state.admin);
 
   useEffect(() => {
-    if (!user) return navigate("/login");
+    if (!admin) return navigate("/login");
   });
 
-  // const handleLogout = () => {
-  //   dispatch(logout());
-  //   navigate("/login");
-  // };
-  
   return (
     <>
-      {user && (
+      {admin && (
         <div className="container ">
           <Sidebar />
           <section className="home">

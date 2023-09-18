@@ -1,4 +1,8 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { logout } from "../redux/adminSlice";
+import { useDispatch } from "react-redux";
 
 function Sidebar() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
@@ -8,10 +12,17 @@ function Sidebar() {
     setIsSidebarOpen(!isSidebarOpen);
   };
 
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  const handleLogout = () => {
+    dispatch(logout());
+    navigate("/login");
+  };
+
   // const toggleDarkMode = () => {
   // 	setIsDarkMode(!isDarkMode);
   // };
-  
 
   return (
     <nav className={`sidebar ${isSidebarOpen ? "close" : ""}`}>
@@ -42,48 +53,48 @@ function Sidebar() {
 
           <ul className="menu-links">
             <li className="nav-link">
-              <a href="#">
+              <Link to="#">
                 <i className="bx bx-home-alt icon"></i>
                 <span className="text nav-text">Dashboard</span>
-              </a>
+              </Link>
             </li>
 
             <li className="nav-link">
-              <a href="#">
+              <Link to="#">
                 <i className="bx bx-bar-chart-alt-2 icon"></i>
                 <span className="text nav-text">Revenue</span>
-              </a>
+              </Link>
             </li>
 
             <li className="nav-link">
-              <a href="#">
+              <Link to="#">
                 <i className="bx bx-bell icon bx-tada-hover"></i>
                 <span className="text nav-text">Notifications</span>
-              </a>
+              </Link>
             </li>
 
             <li className="nav-link">
-              <a href="#">
+              <Link to="#">
                 <i className="bx bx-pie-chart-alt icon"></i>
                 <span className="text nav-text">Analytics</span>
-              </a>
+              </Link>
             </li>
 
             <li className="nav-link">
-              <a href="#">
+              <Link to="#">
                 <i className="bx bx-package icon"></i>
                 <span className="text nav-text">Orders</span>
-              </a>
+              </Link>
             </li>
           </ul>
         </div>
 
         <div className="bottom-content">
           <li className="">
-            <a onClick={""}>
+            <Link onClick={handleLogout}>
               <i className="bx bx-log-out icon"></i>
               <span className="text nav-text">Logout</span>
-            </a>
+            </Link>
           </li>
 
           {/* <li className="mode" onClick={toggleDarkMode}>
