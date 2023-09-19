@@ -3,6 +3,7 @@ import "../css/OrderStatus.css";
 import { useState, useEffect } from "react";
 import axios from "axios";
 
+
 function OrderStatus() {
   const [orderList, setOrderList] = useState([]);
 
@@ -21,12 +22,25 @@ function OrderStatus() {
     getOrders();
   }, [orderList]);
 
+  function getClassNameState(state){
+    switch(state){
+      case "Delivered":
+        return "bgG";
+      case "Paid":
+        return "bgP";
+      case "On the way":
+        return "bgY";
+      default:
+        return "bgR";
+    }
+  }
+  
   return (
     <>
       <div className="containerTable mt-3 text-center">
         <h2>Orders Status</h2>
       </div>
-      <table className="table table-dark table-hover mt-3 hop">
+      <table className="table table-dark table-hover mt-3">
         <thead>
           <tr>
             <th scope="col">#</th>
@@ -44,55 +58,16 @@ function OrderStatus() {
               <td>
                 {order.state}
                 <div
-                  className="progress bgG"
+                  className={`progress ${getClassNameState(order.state)}`}
                   role="progressbar"
-                  aria-valuenow="25"
                 ></div>
               </td>
             </tr>
           ))}
-          <tr>
-            <th scope="row">2</th>
-            <td>Jacob</td>
-            <td>Jul 01, 2023</td>
-            <td>
-              En Camino
-              <div
-                className="progress bgY"
-                role="progressbar"
-                aria-valuenow="25"
-              ></div>
-            </td>
-          </tr>
-          <tr>
-            <th scope="row">3</th>
-            <td>Larry </td>
-            <td>Abr 12, 2023</td>
-            <td>
-              Pagado
-              <div
-                className="progress bgP"
-                role="progressbar"
-                aria-valuenow="25"
-              ></div>
-            </td>
-          </tr>
-          <tr>
-            <th scope="row">3</th>
-            <td>Hernan </td>
-            <td>Jun 06, 2023</td>
-            <td>
-              Sin pagar{" "}
-              <div
-                className="progress bgR"
-                role="progressbar"
-                aria-valuenow="25"
-              ></div>
-            </td>
-          </tr>
         </tbody>
       </table>
     </>
   );
 }
+
 export default OrderStatus;

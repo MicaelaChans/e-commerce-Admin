@@ -96,6 +96,15 @@ function Sidebar() {
                 </div>
               </NavLink>
             </li>
+
+            <li className="nav-link">
+              <NavLink to="#" className="text-decoration-none">
+                <div id="a">
+                  <i className='bx bxs-user-account icon'></i>
+                  <span className="text nav-text">Create admins</span>
+                </div>
+              </NavLink>
+            </li>
           </ul>
         </div>
 
