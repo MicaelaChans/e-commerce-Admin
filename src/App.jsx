@@ -4,6 +4,7 @@ import NotFound from "./components/NotFound";
 import Login from "./components/Login";
 import CreateAdmins from "./components/CreateAdmins";
 import Orders from "./components/Orders";
+import Users from "./components/Users";
 
 function App() {
   return (
@@ -12,7 +13,8 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/" element={<Home />} />
         <Route path="/orders" element={<Orders />} />
-        <Route path="/create-admin" element={<CreateAdmins/>}/>
+        <Route path="/users" element={<Users />} />
+        <Route path="/create-admin" element={<CreateAdmins />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </>

@@ -100,8 +100,17 @@ function Sidebar() {
             <li className="nav-link">
               <NavLink to="#" className="text-decoration-none">
                 <div id="a">
-                  <i className='bx bxs-user-account icon'></i>
+                  <i className="bx bxs-user-account icon"></i>
                   <span className="text nav-text">Create admins</span>
+                </div>
+              </NavLink>
+            </li>
+
+            <li className="nav-link">
+              <NavLink to="#" className="text-decoration-none">
+                <div id="a">
+                  <i className="bi bi-person"></i>
+                  <span className="text nav-text">Users</span>
                 </div>
               </NavLink>
             </li>

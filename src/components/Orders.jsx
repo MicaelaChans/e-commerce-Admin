@@ -6,9 +6,8 @@ import { useDispatch, useSelector } from "react-redux";
 import "../css/Home.css";
 import Sidebar from "../components/SideBar";
 import "../css/Sidebar.css";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 import OrderStatus from "./OrderStatus";
+import { ToastContainer, toast } from "react-toastify";
 
 function Orders() {
   const dispatch = useDispatch();
