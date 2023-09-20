@@ -53,19 +53,10 @@ function Sidebar() {
 
           <ul className="menu-links">
             <li className="nav-link">
-              <NavLink to="#" className="text-decoration-none">
+              <NavLink to="/" className="text-decoration-none">
                 <div id="a">
                   <i className="bx bx-home-alt icon"></i>
                   <span className="text nav-text">Dashboard</span>
-                </div>
-              </NavLink>
-            </li>
-
-            <li className="nav-link">
-              <NavLink to="#" className="text-decoration-none">
-                <div id="a">
-                  <i className="bx bx-bar-chart-alt-2 icon"></i>
-                  <span className="text nav-text">Revenue</span>
                 </div>
               </NavLink>
             </li>
@@ -82,6 +73,15 @@ function Sidebar() {
             <li className="nav-link">
               <NavLink to="#" className="text-decoration-none">
                 <div id="a">
+                  <i className="bx bx-bar-chart-alt-2 icon"></i>
+                  <span className="text nav-text">Revenue</span>
+                </div>
+              </NavLink>
+            </li>
+
+            <li className="nav-link">
+              <NavLink to="#" className="text-decoration-none">
+                <div id="a">
                   <i className="bx bx-pie-chart-alt icon"></i>
                   <span className="text nav-text">Analytics</span>
                 </div>
@@ -89,7 +89,7 @@ function Sidebar() {
             </li>
 
             <li className="nav-link">
-              <NavLink to="#" className="text-decoration-none">
+              <NavLink to="/orders" className="text-decoration-none">
                 <div id="a">
                   <i className="bx bx-package icon"></i>
                   <span className="text nav-text">Orders</span>
@@ -98,19 +98,19 @@ function Sidebar() {
             </li>
 
             <li className="nav-link">
-              <NavLink to="#" className="text-decoration-none">
+              <NavLink to="/users" className="text-decoration-none">
                 <div id="a">
-                  <i className="bx bxs-user-account icon"></i>
-                  <span className="text nav-text">Create admins</span>
+                  <i className="bi bi-person icon"></i>
+                  <span className="text nav-text">Users</span>
                 </div>
               </NavLink>
             </li>
 
             <li className="nav-link">
-              <NavLink to="#" className="text-decoration-none">
+              <NavLink to="/create-admin" className="text-decoration-none">
                 <div id="a">
-                  <i className="bi bi-person"></i>
-                  <span className="text nav-text">Users</span>
+                  <i className="bx bxs-user-account icon"></i>
+                  <span className="text nav-text">Create admins</span>
                 </div>
               </NavLink>
             </li>

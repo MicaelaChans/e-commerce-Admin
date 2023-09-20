@@ -97,17 +97,20 @@ function Users() {
                         aria-labelledby="contained-modal-title-vcenter"
                         centered
                       >
-                        <Modal.Header closeButton>
+                        <Modal.Header
+                          className="bg-dark text-white"
+                          closeButton
+                        >
                           <Modal.Title id="contained-modal-title-vcenter">
                             Modifie User
                           </Modal.Title>
                         </Modal.Header>
-                        <Modal.Body>
+                        <Modal.Body className="bg-dark text-white">
                           <div className="container">
                             <h6>
                               Firstname:
                               <input
-                                className="ms-2 border-0 w-100 ps-2"
+                                className="ms-2 border-0 w-100 ps-2 bg-dark"
                                 type="text"
                                 placeholder={user.firstname}
                               />
@@ -115,7 +118,7 @@ function Users() {
                             <h6>
                               Lastname:{" "}
                               <input
-                                className="ms-2 border-0 w-100 ps-2"
+                                className="ms-2 border-0 w-100 ps-2 bg-dark"
                                 type="text"
                                 placeholder={user.lastname}
                               />
@@ -123,7 +126,7 @@ function Users() {
                             <h6>
                               Email:{" "}
                               <input
-                                className="ms-2 border-0 w-100 ps-2"
+                                className="ms-2 border-0 w-100 ps-2 bg-dark"
                                 type="text"
                                 placeholder={user.email}
                               />
@@ -131,7 +134,7 @@ function Users() {
                             <h6>
                               Address:{" "}
                               <input
-                                className="ms-2 border-0 w-100 ps-2"
+                                className="ms-2 border-0 w-100 ps-2 bg-dark"
                                 type="text"
                                 placeholder={user.address}
                               />
@@ -139,16 +142,34 @@ function Users() {
                             <h6>
                               Phone:{" "}
                               <input
-                                className="ms-2 border-0 w-100 ps-2"
+                                className="ms-2 border-0 w-100 ps-2 bg-dark"
                                 type="text"
                                 placeholder={user.phone}
                               />
                             </h6>
                           </div>
                         </Modal.Body>
-                        <Modal.Footer>
-                          <Button onClick={handleClose}>Cancel</Button>
-                          <Button onClick={handleChange}>Save</Button>
+                        <Modal.Footer className="bg-dark d-flex ">
+                          <div>
+                            <div>
+                              <Button
+                                variant="light text-black"
+                                className="btn btn-outline-light w-25"
+                                onClick={handleClose}
+                              >
+                                Cancel
+                              </Button>
+                            </div>
+                            <div>
+                              <Button
+                                variant="light text-black"
+                                className="btn btn-outline-light w-25"
+                                onClick={handleChange}
+                              >
+                                Save
+                              </Button>
+                            </div>
+                          </div>
                         </Modal.Footer>
                       </Modal>
                       <button className="w-25 btn btn-light ms-2">
