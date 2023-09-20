@@ -1,13 +1,13 @@
 import axios from "axios";
-import React from "react";
-import { useState } from "react";
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import "../css/Home.css";
 import Sidebar from "../components/SideBar";
 import "../css/Sidebar.css";
 import OrderStatus from "./OrderStatus";
 import { ToastContainer, toast } from "react-toastify";
+import Button from "react-bootstrap/Button";
+import Modal from "react-bootstrap/Modal";
 
 function Orders() {
   const dispatch = useDispatch();
@@ -28,6 +28,10 @@ function Orders() {
     getOrders();
   }, [orderList]);
 
+  const [showAdd, setShowAdd] = useState(false);
+  const [showUpdate, setShowUpdate] = useState(false);
+  const [showRemove, setShowRemove] = useState(false);
+
   return (
     <>
       <div className="container ">
@@ -39,19 +43,166 @@ function Orders() {
               <h2>Orders</h2>
               <div className="row mt-3 gap-3 justify-content-center">
                 <div className="col-3" id="colAdd">
-                  <h4>
-                    Add <i className="bi bi-bag-plus-fill"></i>
-                  </h4>
+                  <Button variant="none" onClick={() => setShowAdd(true)}>
+                    <h4>
+                      Add <i className="bi bi-bag-plus-fill"></i>
+                    </h4>
+                  </Button>
+
+                  <Modal
+                    show={showAdd}
+                    onHide={() => setShowAdd(false)}
+                    animation={false}
+                    size="lg"
+                    aria-labelledby="contained-modal-title-vcenter"
+                    centered
+                  >
+                    <Modal.Header className="bg-dark text-white" closeButton>
+                      <Modal.Title id="contained-modal-title-vcenter">
+                        Add Order
+                      </Modal.Title>
+                    </Modal.Header>
+                    <Modal.Body className="bg-dark text-white">
+                      <div className="container">
+                        <form action="">
+                          <label htmlFor="">Email</label>
+                          <input
+                            type="email"
+                            name="email"
+                            placeholder="email@gmail.com"
+                            className="bg-dark border-0 ms-2"
+                          />
+                          <label className="ms-3" htmlFor="">
+                            Product
+                          </label>
+                          <input
+                            type="product"
+                            name="product"
+                            placeholder="harmony-c43"
+                            className="bg-dark border-0 ms-2"
+                          />
+                        </form>
+                      </div>
+                    </Modal.Body>
+                    <Modal.Footer className="bg-dark d-flex ">
+                      <div className="d-flex flex-row gap-3">
+                        <div>
+                          <Button
+                            variant="light text-black"
+                            className="btn btn-outline-light w-100"
+                            onClick={() => setShowAdd(false)}
+                          >
+                            Cancel
+                          </Button>
+                        </div>
+                        <div>
+                          <Button
+                            variant="light text-black"
+                            className="btn btn-outline-light w-100"
+                            onClick={() => setShowAdd(false)}
+                          >
+                            Create
+                          </Button>
+                        </div>
+                      </div>
+                    </Modal.Footer>
+                  </Modal>
                 </div>
+
                 <div className="col-3" id="colUpdate">
-                  <h4>
-                    Update <i className="bx bx-edit-alt bx-fade-right"></i>
-                  </h4>
+                  <Button variant="none" onClick={() => setShowUpdate(true)}>
+                    <h4>
+                      Update <i className="bx bx-edit-alt bx-fade-right"></i>
+                    </h4>
+                  </Button>
+
+                  <Modal
+                    show={showUpdate}
+                    onHide={() => setShowUpdate(false)}
+                    animation={false}
+                    size="lg"
+                    aria-labelledby="contained-modal-title-vcenter"
+                    centered
+                  >
+                    <Modal.Header className="bg-dark text-white" closeButton>
+                      <Modal.Title id="contained-modal-title-vcenter">
+                        Update Order
+                      </Modal.Title>
+                    </Modal.Header>
+                    <Modal.Body className="bg-dark text-white">
+                      <div className="container"></div>
+                    </Modal.Body>
+                    <Modal.Footer className="bg-dark d-flex ">
+                      <div className="d-flex flex-row gap-3">
+                        <div>
+                          <Button
+                            variant="light text-black"
+                            className="btn btn-outline-light w-100"
+                            onClick={() => setShowUpdate(false)}
+                          >
+                            Cancel
+                          </Button>
+                        </div>
+                        <div>
+                          <Button
+                            variant="light text-black"
+                            className="btn btn-outline-light w-100"
+                            onClick={() => setShowUpdate(false)}
+                          >
+                            save
+                          </Button>
+                        </div>
+                      </div>
+                    </Modal.Footer>
+                  </Modal>
                 </div>
+
                 <div className="col-3" id="colRemove">
-                  <h4>
-                    Remove <i className="bi bi-trash3"></i>
-                  </h4>
+                  <Button variant="none" onClick={() => setShowRemove(true)}>
+                    <h4>
+                      Remove <i className="bi bi-trash3"></i>
+                    </h4>
+                  </Button>
+
+                  <Modal
+                    show={showRemove}
+                    onHide={() => setShowRemove(false)}
+                    animation={false}
+                    size="lg"
+                    aria-labelledby="contained-modal-title-vcenter"
+                    centered
+                  >
+                    <Modal.Header className="bg-dark text-white" closeButton>
+                      <Modal.Title id="contained-modal-title-vcenter">
+                        Remove Order
+                      </Modal.Title>
+                    </Modal.Header>
+                    <Modal.Body className="bg-dark text-white">
+                      <div className="container"></div>
+                    </Modal.Body>
+                    <Modal.Footer className="bg-dark d-flex ">
+                      <div className="d-flex flex-row gap-3">
+                        <div>
+                          <Button
+                            variant="light text-black"
+                            className="btn btn-outline-light w-100"
+                            onClick={() => setShowRemove(false)}
+                          >
+                            Cancel
+                          </Button>
+                        </div>
+                        <div>
+                          <Button
+                            variant="light text-black"
+                            className="btn btn-outline-light w-100"
+                            onClick={() => setShowRemove(false)}
+                          >
+                            Remove
+                          </Button>
+                        </div>
+                      </div>
+                    </Modal.Footer>
+                  </Modal>
                 </div>
               </div>
               <OrderStatus />

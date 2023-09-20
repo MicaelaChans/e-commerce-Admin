@@ -12,7 +12,6 @@ import Modal from "react-bootstrap/Modal";
 function Users() {
   const dispatch = useDispatch();
   const [userList, setUserList] = useState([]);
-  const [show, setShow] = useState(false);
   const [userData, setUserData] = useState({
     firstname: "",
     lastname: "",
@@ -36,9 +35,6 @@ function Users() {
     getUsers();
   }, []);
 
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
-
   const handleChange = (event) => {
     const { name, value } = event.target;
     setUserData({ ...userData, [name]: value });
@@ -55,6 +51,9 @@ function Users() {
       console.error("Error al actualizar usuario:", error);
     }
   };
+
+  const [showModifie, setShowModifie] = useState(false);
+  const [showOrders, setShowOrders] = useState(false);
 
   return (
     <div className="container ">
@@ -84,14 +83,14 @@ function Users() {
                     <td>
                       <Button
                         className="w-25 btn btn-light ms-2"
-                        onClick={handleShow}
+                        onClick={() => setShowModifie(true)}
                       >
                         Modifie
                       </Button>
 
                       <Modal
-                        show={show}
-                        onHide={handleClose}
+                        show={showModifie}
+                        onHide={() => setShowModifie(false)}
                         animation={false}
                         size="lg"
                         aria-labelledby="contained-modal-title-vcenter"
@@ -150,12 +149,12 @@ function Users() {
                           </div>
                         </Modal.Body>
                         <Modal.Footer className="bg-dark d-flex ">
-                          <div>
+                          <div className="d-flex flex-row gap-3">
                             <div>
                               <Button
                                 variant="light text-black"
-                                className="btn btn-outline-light w-25"
-                                onClick={handleClose}
+                                className="btn btn-outline-light w-100"
+                                onClick={() => setShowModifie(false)}
                               >
                                 Cancel
                               </Button>
@@ -163,8 +162,8 @@ function Users() {
                             <div>
                               <Button
                                 variant="light text-black"
-                                className="btn btn-outline-light w-25"
-                                onClick={handleChange}
+                                className="btn btn-outline-light w-100"
+                                onClick={() => setShowModifie(false)}
                               >
                                 Save
                               </Button>
@@ -172,9 +171,55 @@ function Users() {
                           </div>
                         </Modal.Footer>
                       </Modal>
-                      <button className="w-25 btn btn-light ms-2">
+
+                      <Button
+                        className="w-25 btn btn-light ms-2"
+                        onClick={() => setShowOrders(true)}
+                      >
                         Orders
-                      </button>
+                      </Button>
+
+                      <Modal
+                        show={showOrders}
+                        onHide={() => setShowOrders(false)}
+                        animation={false}
+                        size="lg"
+                        aria-labelledby="contained-modal-title-vcenter"
+                        centered
+                      >
+                        <Modal.Header
+                          className="bg-dark text-white"
+                          closeButton
+                        >
+                          <Modal.Title id="contained-modal-title-vcenter">
+                            Orders User
+                          </Modal.Title>
+                        </Modal.Header>
+                        <Modal.Body className="bg-dark text-white">
+                          <div className="container">
+                            <table className="table table-dark table-hover mt-3">
+                              <thead>
+                                <tr>
+                                  <th scope="col">#</th>
+                                  <th scope="col">Firstname</th>
+                                  <th scope="col">Due Date</th>
+                                  <th scope="col">Progress</th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                <tr>
+                                  <th scope="row"></th>
+                                  <td>order.user.firstname</td>
+                                  <td>order.updatedAt</td>
+                                  <td>
+                                    <div className="" role="progressbar"></div>
+                                  </td>
+                                </tr>
+                              </tbody>
+                            </table>
+                          </div>
+                        </Modal.Body>
+                      </Modal>
                     </td>
                   </tr>
                 ))}
