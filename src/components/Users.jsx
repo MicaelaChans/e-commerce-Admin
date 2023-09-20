@@ -210,9 +210,7 @@ function Users() {
                                     <th scope="row">{index + 1}</th>
                                     <td>{order.updatedAt}</td>
                                     <td>
-                                      {order.products.map((product, index) => (
-                                        <p key={index + 1}>{product.name}</p>
-                                      ))}
+                                      {order.products.map((product) => <p key={product.id}>{product.name}</p>)}
                                     </td>
                                     <td>{order.state}</td>
                                     <td>

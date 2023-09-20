@@ -18,13 +18,12 @@
   background: linear-gradient(
     90deg,
     rgba(255, 215, 158, 1) 22%,
-    rgba(255, 167, 251, 1) 77%
+    rgb(255, 195, 167) 77%
   );
   backdrop-filter: blur(5px);
   border-radius: 5px;
   color: black;
 }
-
 .bg2 {
   width: 420px;
   height: 220px;
@@ -50,8 +49,8 @@
   background: rgb(218, 184, 255);
   background: linear-gradient(
     90deg,
-    rgba(218, 184, 255, 1) 24%,
-    rgba(255, 250, 170, 1) 73%
+    rgb(184, 255, 198) 24%,
+    rgb(176, 255, 170) 73%
   );
   backdrop-filter: blur(5px);
   border-radius: 5px;
