@@ -1,7 +1,5 @@
 import axios from "axios";
-import React from "react";
-import { useState } from "react";
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Sidebar from "../components/SideBar";
 import { ToastContainer, toast } from "react-toastify";
@@ -218,10 +216,7 @@ function Users() {
                                     </td>
                                     <td>{order.state}</td>
                                     <td>
-                                      <div
-                                        className=""
-                                        role="progressbar"
-                                      ></div>
+                                      <div role="progressbar"></div>
                                     </td>
                                   </tr>
                                 ))}

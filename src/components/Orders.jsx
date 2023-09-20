@@ -8,6 +8,7 @@ import OrderStatus from "./OrderStatus";
 import { ToastContainer, toast } from "react-toastify";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
+import { addOrder, removeOrder } from "../redux/OrderSlice";
 
 function Orders() {
   const dispatch = useDispatch();
@@ -27,6 +28,15 @@ function Orders() {
     };
     getOrders();
   }, [orderList]);
+
+  const handleAddOrder = (e) => {
+    e.preventDefault();
+    dispatch(addOrder({ id: id }));
+  };
+
+  const handleRemoveOrder = (orderId) => {
+    dispatch(removeOrder(orderId));
+  };
 
   const [showAdd, setShowAdd] = useState(false);
   const [showUpdate, setShowUpdate] = useState(false);
@@ -99,7 +109,7 @@ function Orders() {
                           <Button
                             variant="light text-black"
                             className="btn btn-outline-light w-100"
-                            onClick={() => setShowAdd(false)}
+                            onClick={() => handleAddOrder}
                           >
                             Create
                           </Button>
@@ -178,7 +188,39 @@ function Orders() {
                       </Modal.Title>
                     </Modal.Header>
                     <Modal.Body className="bg-dark text-white">
-                      <div className="container"></div>
+                      <div className="container">
+                        <table className="table table-dark table-hover mt-3">
+                          <thead>
+                            <tr>
+                              <th scope="col">#</th>
+                              <th scope="col">Firstname</th>
+                              <th scope="col">Due Date</th>
+                              <th scope="col">Progress</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            {orderList.map((order, index) => (
+                              <tr key={order.id}>
+                                <th scope="row">{index + 1}</th>
+                                <td>
+                                  <input
+                                    className="form-check-input"
+                                    type="checkbox"
+                                    value=""
+                                    checked={false}
+                                  />
+                                  {order.user.firstname}
+                                </td>
+                                <td>{order.updatedAt}</td>
+                                <td>
+                                  {order.state}
+                                  <div role="progressbar"></div>
+                                </td>
+                              </tr>
+                            ))}
+                          </tbody>
+                        </table>
+                      </div>
                     </Modal.Body>
                     <Modal.Footer className="bg-dark d-flex ">
                       <div className="d-flex flex-row gap-3">
@@ -195,7 +237,7 @@ function Orders() {
                           <Button
                             variant="light text-black"
                             className="btn btn-outline-light w-100"
-                            onClick={() => setShowRemove(false)}
+                            onClick={() => handleRemoveOrder}
                           >
                             Remove
                           </Button>
