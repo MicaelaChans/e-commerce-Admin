@@ -2,7 +2,7 @@ import Home from "./components/Home";
 import { Routes, Route } from "react-router-dom";
 import NotFound from "./components/NotFound";
 import Login from "./components/Login";
-import CreateAdmins from "./components/CreateAdmins";
+import StaffPanel from "./components/StaffPanel";
 import Orders from "./components/Orders";
 import Users from "./components/Users";
 
@@ -14,7 +14,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/orders" element={<Orders />} />
         <Route path="/users" element={<Users />} />
-        <Route path="/create-admin" element={<CreateAdmins />} />
+        <Route path="/staff-panel" element={<StaffPanel />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </>

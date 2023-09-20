@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react";
 import "../css/Home.css";
-import Sidebar from "../components/SideBar";
+import Sidebar from "./SideBar";
 import "../css/Sidebar.css";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import axios from "axios";
 import "../css/CreateAdmin.css"
 
-function CreateAdmins() {
+function StaffPanel() {
   const [adminsList, setAdminList] = useState([]);
   const [firstname, setFirstname] = useState("");
   const [lastname, setLastname] = useState("");
@@ -69,12 +69,12 @@ function CreateAdmins() {
       <div className="container ">
         <Sidebar />
         <section className="home">
-          <div className="text">Create admins</div>
+          <div className="text">Staff Panel</div>
           <div className="container">
 
             <div className="CreateAdmin shadow p-4">
               <form method="POST" onSubmit={handleSubmit}>
-                <h2>Register admin</h2>
+                <h2>Register Staff member</h2>
                 <div className="row">
                   <div className="col-6">
                     <div className="inputbox">
@@ -137,7 +137,7 @@ function CreateAdmins() {
             </div>
 
             <div className="mt-5">
-              <h2>Users</h2>
+              <h2>Staff</h2>
               <table className="table table-dark table-hover mt-3">
                 <thead>
                   <tr>
@@ -171,6 +171,6 @@ function CreateAdmins() {
   )
 }
 
-export default CreateAdmins
+export default StaffPanel;
 
 

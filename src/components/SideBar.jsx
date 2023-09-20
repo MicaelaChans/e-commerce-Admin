@@ -5,7 +5,7 @@ import { logout } from "../redux/adminSlice";
 import { useDispatch } from "react-redux";
 
 function Sidebar() {
-  const [isSidebarOpen, setIsSidebarOpen] = useState(true);
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   // const [isDarkMode, setIsDarkMode] = useState(false);
 
   const toggleSidebar = () => {
@@ -107,10 +107,10 @@ function Sidebar() {
             </li>
 
             <li className="nav-link">
-              <NavLink to="/create-admin" className="text-decoration-none">
+              <NavLink to="/staff-panel" className="text-decoration-none">
                 <div id="a">
                   <i className="bx bxs-user-account icon"></i>
-                  <span className="text nav-text">Create admins</span>
+                  <span className="text nav-text">Staff Panel</span>
                 </div>
               </NavLink>
             </li>

@@ -1,22 +1,25 @@
 import axios from "axios";
-import { useState, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import React from "react";
+import { useState } from "react";
+import { useEffect } from "react";
+//import { useDispatch, useSelector } from "react-redux";
 import Sidebar from "../components/SideBar";
-import { ToastContainer, toast } from "react-toastify";
+//import { ToastContainer, toast } from "react-toastify";
 
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 
 function Users() {
-  const dispatch = useDispatch();
+  //const dispatch = useDispatch();
   const [userList, setUserList] = useState([]);
-  const [userData, setUserData] = useState({
-    firstname: "",
-    lastname: "",
-    email: "",
-    address: "",
-    phone: "",
-  });
+  // const [show, setShow] = useState(false);
+  // const [userData, setUserData] = useState({
+  //   firstname: "",
+  //   lastname: "",
+  //   email: "",
+  //   address: "",
+  //   phone: "",
+  // });
 
   useEffect(() => {
     const getUsers = async () => {
@@ -33,25 +36,25 @@ function Users() {
     getUsers();
   }, []);
 
-  const handleChange = (event) => {
-    const { name, value } = event.target;
-    setUserData({ ...userData, [name]: value });
-  };
+  // const handleClose = () => setShow(false);
+  // const handleShow = () => setShow(true);
 
-  const handleSave = async () => {
-    try {
-      const userId = user.id;
-      const url = `http://localhost:8000/users/${userId}`;
-      const response = await axios.put(url, userData);
-      console.log("Usuario actualizado:", response.data);
-      handleClose();
-    } catch (error) {
-      console.error("Error al actualizar usuario:", error);
-    }
-  };
+  // const handleChange = (event) => {
+  //   const { name, value } = event.target;
+  //   setUserData({ ...userData, [name]: value });
+  // };
 
-  const [showModifie, setShowModifie] = useState(false);
-  const [showOrders, setShowOrders] = useState(false);
+  // const handleSave = async () => {
+  //   try {
+  //     const userId = user.id;
+  //     const url = `http://localhost:8000/users/${userId}`;
+  //     const response = await axios.put(url, userData);
+  //     console.log("Usuario actualizado:", response.data);
+  //     handleClose();
+  //   } catch (error) {
+  //     console.error("Error al actualizar usuario:", error);
+  //   }
+  // };
 
   return (
     <div className="container ">
@@ -66,7 +69,7 @@ function Users() {
                 <tr>
                   <th scope="col">#</th>
                   <th scope="col">Firstname</th>
-                  <th scope="col">lastname</th>
+                  <th scope="col">Lastname</th>
                   <th scope="col">Email</th>
                   <th scope="col">Action</th>
                 </tr>
@@ -79,35 +82,32 @@ function Users() {
                     <td>{user.lastname}</td>
                     <td>{user.email}</td>
                     <td>
-                      <Button
+                      {/* <Button
                         className="w-25 btn btn-light ms-2"
-                        onClick={() => setShowModifie(true)}
+                        onClick={handleShow}
                       >
                         Modifie
                       </Button>
 
                       <Modal
-                        show={showModifie}
-                        onHide={() => setShowModifie(false)}
+                        show={show}
+                        onHide={handleClose}
                         animation={false}
                         size="lg"
                         aria-labelledby="contained-modal-title-vcenter"
                         centered
                       >
-                        <Modal.Header
-                          className="bg-dark text-white"
-                          closeButton
-                        >
+                        <Modal.Header closeButton>
                           <Modal.Title id="contained-modal-title-vcenter">
                             Modifie User
                           </Modal.Title>
                         </Modal.Header>
-                        <Modal.Body className="bg-dark text-white">
+                        <Modal.Body>
                           <div className="container">
                             <h6>
                               Firstname:
                               <input
-                                className="ms-2 border-0 w-100 ps-2 bg-dark"
+                                className="ms-2 border-0 w-100 ps-2"
                                 type="text"
                                 placeholder={user.firstname}
                               />
@@ -115,7 +115,7 @@ function Users() {
                             <h6>
                               Lastname:{" "}
                               <input
-                                className="ms-2 border-0 w-100 ps-2 bg-dark"
+                                className="ms-2 border-0 w-100 ps-2"
                                 type="text"
                                 placeholder={user.lastname}
                               />
@@ -123,7 +123,7 @@ function Users() {
                             <h6>
                               Email:{" "}
                               <input
-                                className="ms-2 border-0 w-100 ps-2 bg-dark"
+                                className="ms-2 border-0 w-100 ps-2"
                                 type="text"
                                 placeholder={user.email}
                               />
@@ -131,7 +131,7 @@ function Users() {
                             <h6>
                               Address:{" "}
                               <input
-                                className="ms-2 border-0 w-100 ps-2 bg-dark"
+                                className="ms-2 border-0 w-100 ps-2"
                                 type="text"
                                 placeholder={user.address}
                               />
@@ -139,90 +139,21 @@ function Users() {
                             <h6>
                               Phone:{" "}
                               <input
-                                className="ms-2 border-0 w-100 ps-2 bg-dark"
+                                className="ms-2 border-0 w-100 ps-2"
                                 type="text"
                                 placeholder={user.phone}
                               />
                             </h6>
                           </div>
                         </Modal.Body>
-                        <Modal.Footer className="bg-dark d-flex ">
-                          <div className="d-flex flex-row gap-3">
-                            <div>
-                              <Button
-                                variant="light text-black"
-                                className="btn btn-outline-light w-100"
-                                onClick={() => setShowModifie(false)}
-                              >
-                                Cancel
-                              </Button>
-                            </div>
-                            <div>
-                              <Button
-                                variant="light text-black"
-                                className="btn btn-outline-light w-100"
-                                onClick={() => setShowModifie(false)}
-                              >
-                                Save
-                              </Button>
-                            </div>
-                          </div>
+                        <Modal.Footer>
+                          <Button onClick={handleClose}>Cancel</Button>
+                          <Button onClick={handleChange}>Save</Button>
                         </Modal.Footer>
                       </Modal>
-
-                      <Button
-                        className="w-25 btn btn-light ms-2"
-                        onClick={() => setShowOrders(true)}
-                      >
+                      <button className="w-25 btn btn-light ms-2">
                         Orders
-                      </Button>
-
-                      <Modal
-                        show={showOrders}
-                        onHide={() => setShowOrders(false)}
-                        animation={false}
-                        size="lg"
-                        aria-labelledby="contained-modal-title-vcenter"
-                        centered
-                      >
-                        <Modal.Header
-                          className="bg-dark text-white"
-                          closeButton
-                        >
-                          <Modal.Title id="contained-modal-title-vcenter">
-                            Orders User
-                          </Modal.Title>
-                        </Modal.Header>
-                        <Modal.Body className="bg-dark text-white">
-                          <div className="container">
-                            <table className="table table-dark table-hover mt-3">
-                              <thead>
-                                <tr>
-                                  <th scope="col">#</th>
-                                  <th scope="col">Due Date</th>
-                                  <th scope="col">Product</th>
-                                  <th scope="col">Progress</th>
-                                </tr>
-                              </thead>
-                              <tbody>
-                                {user.orders.map((order, index) => (
-                                  <tr key={order.id}>
-                                    <th scope="row">{index + 1}</th>
-                                    <td>{order.updatedAt}</td>
-                                    <td>
-                                      {order.products.map((product) => <p key={product.id}>{product.name}</p>)}
-                                    </td>
-                                    <td>{order.state}</td>
-                                    <td>
-                                      <div role="progressbar"></div>
-                                    </td>
-                                  </tr>
-                                ))}
-                              </tbody>
-                            </table>
-                          </div>
-                        </Modal.Body>
-                      </Modal>
+                      </button> */}
                     </td>
                   </tr>
                 ))}
