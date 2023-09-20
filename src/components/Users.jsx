@@ -201,20 +201,30 @@ function Users() {
                               <thead>
                                 <tr>
                                   <th scope="col">#</th>
-                                  <th scope="col">Firstname</th>
                                   <th scope="col">Due Date</th>
+                                  <th scope="col">Product</th>
                                   <th scope="col">Progress</th>
                                 </tr>
                               </thead>
                               <tbody>
-                                <tr>
-                                  <th scope="row"></th>
-                                  <td>order.user.firstname</td>
-                                  <td>order.updatedAt</td>
-                                  <td>
-                                    <div className="" role="progressbar"></div>
-                                  </td>
-                                </tr>
+                                {user.orders.map((order, index) => (
+                                  <tr key={order.id}>
+                                    <th scope="row">{index + 1}</th>
+                                    <td>{order.updatedAt}</td>
+                                    <td>
+                                      {order.products.map((product, index) => (
+                                        <p key={index + 1}>{product.name}</p>
+                                      ))}
+                                    </td>
+                                    <td>{order.state}</td>
+                                    <td>
+                                      <div
+                                        className=""
+                                        role="progressbar"
+                                      ></div>
+                                    </td>
+                                  </tr>
+                                ))}
                               </tbody>
                             </table>
                           </div>
