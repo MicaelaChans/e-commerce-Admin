@@ -7,7 +7,7 @@ import "../css/Sidebar.css";
 import PieCharts from "./PieChart";
 import LineCharts from "./LineChart";
 import Barcharts from "./BarCharts";
-import OrderStatus from "./OrderStatus";
+import Orders from "./Orders";
 import "../css/Charts.css";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -76,7 +76,8 @@ function Home() {
                 <div className="container mt-3 pb-5">
                   <div className="row">
                     <div className="col-4"></div>
-                    <OrderStatus />
+                    <h2 className="mt-4">Orders</h2>
+                    <Orders />
                   </div>
                 </div>
                 <ToastContainer position="top-right" />

@@ -2,24 +2,24 @@ import axios from "axios";
 import React from "react";
 import { useState } from "react";
 import { useEffect } from "react";
-//import { useDispatch, useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import Sidebar from "../components/SideBar";
-//import { ToastContainer, toast } from "react-toastify";
+import { ToastContainer, toast } from "react-toastify";
 
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 
 function Users() {
-  //const dispatch = useDispatch();
+  const dispatch = useDispatch();
   const [userList, setUserList] = useState([]);
-  // const [show, setShow] = useState(false);
-  // const [userData, setUserData] = useState({
-  //   firstname: "",
-  //   lastname: "",
-  //   email: "",
-  //   address: "",
-  //   phone: "",
-  // });
+
+  const [userData, setUserData] = useState({
+    firstname: "",
+    lastname: "",
+    email: "",
+    address: "",
+    phone: "",
+  });
 
   useEffect(() => {
     const getUsers = async () => {
@@ -36,25 +36,10 @@ function Users() {
     getUsers();
   }, []);
 
-  // const handleClose = () => setShow(false);
-  // const handleShow = () => setShow(true);
+  const [showModifie, setShowModifie] = useState(false);
+  const [showOrders, setShowOrders] = useState(false);
 
-  // const handleChange = (event) => {
-  //   const { name, value } = event.target;
-  //   setUserData({ ...userData, [name]: value });
-  // };
-
-  // const handleSave = async () => {
-  //   try {
-  //     const userId = user.id;
-  //     const url = `http://localhost:8000/users/${userId}`;
-  //     const response = await axios.put(url, userData);
-  //     console.log("Usuario actualizado:", response.data);
-  //     handleClose();
-  //   } catch (error) {
-  //     console.error("Error al actualizar usuario:", error);
-  //   }
-  // };
+  const handleShowOrder = async () => {};
 
   return (
     <div className="container ">
@@ -63,7 +48,6 @@ function Users() {
         <div className="text">Users</div>
         <div className="container letters">
           <div className="container mt-3 text-center">
-            <h2>Users</h2>
             <table className="table table-dark table-hover mt-3">
               <thead>
                 <tr>
@@ -82,16 +66,16 @@ function Users() {
                     <td>{user.lastname}</td>
                     <td>{user.email}</td>
                     <td>
-                      {/* <Button
+                      <Button
                         className="w-25 btn btn-light ms-2"
-                        onClick={handleShow}
+                        onClick={() => setShowModifie(true)}
                       >
                         Modifie
                       </Button>
 
                       <Modal
-                        show={show}
-                        onHide={handleClose}
+                        show={showModifie}
+                        onHide={() => setShowModifie(false)}
                         animation={false}
                         size="lg"
                         aria-labelledby="contained-modal-title-vcenter"
@@ -147,13 +131,76 @@ function Users() {
                           </div>
                         </Modal.Body>
                         <Modal.Footer>
-                          <Button onClick={handleClose}>Cancel</Button>
-                          <Button onClick={handleChange}>Save</Button>
+                          <Button
+                            variant="dark text-white"
+                            className="btn btn-outline-dark w-25"
+                            onClick={() => setShowModifie(false)}
+                          >
+                            Cancel
+                          </Button>
+                          <Button
+                            variant="dark text-white"
+                            className="btn btn-outline-dark w-25"
+                            onClick={() => setShowModifie(false)}
+                          >
+                            Save
+                          </Button>
                         </Modal.Footer>
                       </Modal>
-                      <button className="w-25 btn btn-light ms-2">
+
+                      <Button
+                        className="w-25 btn btn-light ms-2"
+                        onClick={() => setShowOrders(true)}
+                      >
                         Orders
-                      </button> */}
+                      </Button>
+
+                      <Modal
+                        show={showOrders}
+                        onHide={() => setShowOrders(false)}
+                        animation={false}
+                        size="lg"
+                        aria-labelledby="contained-modal-title-vcenter"
+                        centered
+                      >
+                        <Modal.Header closeButton>
+                          <Modal.Title id="contained-modal-title-vcenter ">
+                            All your orders
+                          </Modal.Title>
+                        </Modal.Header>
+                        <Modal.Body>
+                          <div className="container">
+                            <table className="table table-dark table-hover mt-3">
+                              <thead>
+                                <tr>
+                                  <th scope="col">#</th>
+                                  <th scope="col">Due Date</th>
+                                  <th scope="col">Product</th>
+                                  <th scope="col">Progress</th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                {/*user.map((user, index) => (
+                                  <tr key={user.id}>
+                                    <th scope="row">{index + 1}</th>
+                                    <td>{user.firstname}</td>
+                                    <td>{user.order.updatedAt}</td>
+                                    <td>
+                                      {order.state}
+                                      <div
+                                        className={`progress ${getClassNameState(
+                                          order.state
+                                        )}`}
+                                        role="progressbar"
+                                      ></div>
+                                    </td>
+                                  </tr>
+                                        ))*/}
+                              </tbody>
+                            </table>
+                          </div>
+                        </Modal.Body>
+                      </Modal>
                     </td>
                   </tr>
                 ))}
