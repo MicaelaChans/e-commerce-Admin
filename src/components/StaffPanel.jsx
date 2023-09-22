@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 import "../css/Home.css";
 import Sidebar from "./SideBar";
 import "../css/Sidebar.css";
@@ -8,6 +9,7 @@ import axios from "axios";
 import "../css/CreateAdmin.css"
 
 function StaffPanel() {
+  const admin = useSelector((state) => state.admin);
   const [adminsList, setAdminList] = useState([]);
   const [firstname, setFirstname] = useState("");
   const [lastname, setLastname] = useState("");
@@ -21,6 +23,9 @@ function StaffPanel() {
       const response = await axios({
         method: "GET",
         url: "http://localhost:8000/admins",
+        headers: {
+          Authorization: "Bearer " + (admin.admin && admin.admin.token),
+        },
       });
       setAdminList(response.data);
     } catch (error) {
@@ -34,6 +39,9 @@ function StaffPanel() {
       method: "POST",
       url: `http://localhost:8000/admins`,
       data: { firstname, lastname, username, email, password },
+      headers: {
+        Authorization: "Bearer " + (admin.admin && admin.admin.token),
+      },
     });
     console.log(response.data);
 
@@ -49,7 +57,10 @@ function StaffPanel() {
   const handleDeleteAdmin = async (adminId, username) => {
     if (username === 'admin') {
       toast.error("Este usuario no se puede eliminar");
-      console.error('No se puede eliminar al usuario "admin".');
+      return;
+    }
+    if (username === admin.admin.username) {
+      toast.error("No te puedes eliminar a vos mismo");
       return;
     }
     try {

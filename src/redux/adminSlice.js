@@ -7,10 +7,10 @@ const adminSlice = createSlice({
   },
   reducers: {
     login: (state, action) => {
-      return action.payload;
+      state.admin = action.payload;
     },
     logout: (state, action) => {
-      return null;
+      state.admin = null;
     },
   },
 });

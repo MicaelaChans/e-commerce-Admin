@@ -13,6 +13,7 @@ import ModifyModal from "./ModifyModal";
 
 function Users() {
   const dispatch = useDispatch();
+  const admin = useSelector((state) => state.admin);
   const [userList, setUserList] = useState([]);
   const [userId, setUserId] = useState("");
   const [showModify, setShowModify] = useState(false);
@@ -32,6 +33,9 @@ function Users() {
         const response = await axios({
           method: "GET",
           url: "http://localhost:8000/users",
+          headers: {
+            Authorization: "Bearer " + (admin.admin && admin.admin.token),
+          },
         });
         setUserList(response.data);
       } catch (error) {
@@ -39,7 +43,7 @@ function Users() {
       }
     };
     getUsers();
-  }, []);
+  }, [admin]);
 
   const handleUserOne = (userId) => {
     setUserId(userId);

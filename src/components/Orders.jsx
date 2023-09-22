@@ -1,5 +1,7 @@
 import React from "react";
 import "../css/Orders.css";
+import { useSelector } from "react-redux";
+//import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import Sidebar from "../components/SideBar";
@@ -7,6 +9,7 @@ import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 
 function Orders() {
+  const admin = useSelector((state) => state.admin);
   const [orderList, setOrderList] = useState([]);
   const [showUpdate, setShowUpdate] = useState(false);
 
@@ -16,6 +19,9 @@ function Orders() {
         const response = await axios({
           method: "GET",
           url: "http://localhost:8000/orders",
+          headers: {
+            Authorization: "Bearer " + (admin.admin && admin.admin.token),
+          },
         });
         setOrderList(response.data);
       } catch (error) {
@@ -23,7 +29,7 @@ function Orders() {
       }
     };
     getOrders();
-  }, [orderList]);
+  }, [orderList, admin]);
 
   const handleRemoveOrder = (orderId) => {
     dispatch(removeOrder(orderId));

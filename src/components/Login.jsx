@@ -12,43 +12,42 @@ function Login() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
-  //const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // try {
-    //   const response = await axios({
-    //     url: "http://localhost:8000/tokens/admin",
-    //     method: "POST",
-    //     data: { username, password },
-    //   });
+    try {
+      const response = await axios({
+        url: "http://localhost:8000/tokens/admin",
+        method: "POST",
+        data: { username, password },
+      });
 
-    //   if (response.data.token) {
-    //     const id = jwt(response.data.token).sub;
-    //     const username = jwt(response.data.token).username;
-    //     dispatch(
-    //       login({
-    //         token: response.data.token,
-    //         id,
-    //         username,
-    //       })
-    //     );
-    //     localStorage.setItem("showSuccessToast", "true");
-    //     navigate("/");
-    //   } else {
-    //     toast.error(
-    //       response.data.error || "Error logging in. Please try again."
-    //     );
-    //   }
-    // } catch (error) {
-    //   if (error.response && error.response.data && error.response.data.error) {
-    //     toast.error(error.response.data.error);
-    //   } else {
-    //     toast.error("Error logging in. Please try again.");
-    //   }
-    // }
-    navigate("/");
+      if (response.data.token) {
+        const id = jwt(response.data.token).sub;
+        const username = jwt(response.data.token).username;
+        dispatch(
+          login({
+            token: response.data.token,
+            id,
+            username,
+          })
+        );
+        localStorage.setItem("showSuccessToast", "true");
+        navigate("/");
+      } else {
+        toast.error(
+          response.data.error || "Error logging in. Please try again."
+        );
+      }
+    } catch (error) {
+      if (error.response && error.response.data && error.response.data.error) {
+        toast.error(error.response.data.error);
+      } else {
+        toast.error("Error logging in. Please try again.");
+      }
+    }
   };
 
   return (

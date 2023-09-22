@@ -9,7 +9,7 @@ import LineCharts from "./LineChart";
 import Barcharts from "./BarCharts";
 import Orders from "./Orders";
 import "../css/Charts.css";
-import { ToastContainer, toast } from "react-toastify";
+import { ToastContainer} from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 function Home() {
@@ -17,14 +17,18 @@ function Home() {
   const admin = useSelector((state) => state.admin);
 
   useEffect(() => {
-    if (!admin) return navigate("/login");
-  });
+    console.log("Ejecutando useEffect en Home");
+    console.log("Estado admin:", admin);
+  
+    if (!admin.admin) {
+      console.log("Redirigiendo a /login");
+      navigate("/login");
+    }
+  }, []);
 
   return (
     <>
-      {admin &&
-        (console.log(admin),
-        (
+      {admin && (
           <div className="container ">
             <Sidebar />
             <section className="home">
@@ -84,7 +88,7 @@ function Home() {
               </div>
             </section>
           </div>
-        ))}
+        )}
     </>
   );
 }
