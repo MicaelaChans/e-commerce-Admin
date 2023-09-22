@@ -8,10 +8,15 @@ import { ToastContainer, toast } from "react-toastify";
 
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
+import OrderModal from "./OrderModal";
+import ModifyModal from "./ModifyModal";
 
 function Users() {
   const dispatch = useDispatch();
   const [userList, setUserList] = useState([]);
+  const [userId, setUserId] = useState("");
+  const [showModify, setShowModify] = useState(false);
+  const [showOrders, setShowOrders] = useState(false);
 
   const [userData, setUserData] = useState({
     firstname: "",
@@ -36,10 +41,10 @@ function Users() {
     getUsers();
   }, []);
 
-  const [showModifie, setShowModifie] = useState(false);
-  const [showOrders, setShowOrders] = useState(false);
-
-  const handleShowOrder = async () => {};
+  const handleUserOne = (userId) => {
+    setUserId(userId);
+    setShowOrders(true);
+  };
 
   return (
     <div className="container ">
@@ -68,139 +73,27 @@ function Users() {
                     <td>
                       <Button
                         className="w-25 btn btn-light ms-2"
-                        onClick={() => setShowModifie(true)}
+                        onClick={() => setShowModify(true)}
                       >
-                        Modifie
+                        Modify
                       </Button>
-
-                      <Modal
-                        show={showModifie}
-                        onHide={() => setShowModifie(false)}
-                        animation={false}
-                        size="lg"
-                        aria-labelledby="contained-modal-title-vcenter"
-                        centered
-                      >
-                        <Modal.Header closeButton>
-                          <Modal.Title id="contained-modal-title-vcenter">
-                            Modifie User
-                          </Modal.Title>
-                        </Modal.Header>
-                        <Modal.Body>
-                          <div className="container">
-                            <h6>
-                              Firstname:
-                              <input
-                                className="ms-2 border-0 w-100 ps-2"
-                                type="text"
-                                placeholder={user.firstname}
-                              />
-                            </h6>
-                            <h6>
-                              Lastname:{" "}
-                              <input
-                                className="ms-2 border-0 w-100 ps-2"
-                                type="text"
-                                placeholder={user.lastname}
-                              />
-                            </h6>
-                            <h6>
-                              Email:{" "}
-                              <input
-                                className="ms-2 border-0 w-100 ps-2"
-                                type="text"
-                                placeholder={user.email}
-                              />
-                            </h6>
-                            <h6>
-                              Address:{" "}
-                              <input
-                                className="ms-2 border-0 w-100 ps-2"
-                                type="text"
-                                placeholder={user.address}
-                              />
-                            </h6>
-                            <h6>
-                              Phone:{" "}
-                              <input
-                                className="ms-2 border-0 w-100 ps-2"
-                                type="text"
-                                placeholder={user.phone}
-                              />
-                            </h6>
-                          </div>
-                        </Modal.Body>
-                        <Modal.Footer>
-                          <Button
-                            variant="dark text-white"
-                            className="btn btn-outline-dark w-25"
-                            onClick={() => setShowModifie(false)}
-                          >
-                            Cancel
-                          </Button>
-                          <Button
-                            variant="dark text-white"
-                            className="btn btn-outline-dark w-25"
-                            onClick={() => setShowModifie(false)}
-                          >
-                            Save
-                          </Button>
-                        </Modal.Footer>
-                      </Modal>
+                      <ModifyModal
+                        showModify={showModify}
+                        setShowModify={setShowModify}
+                      />
 
                       <Button
                         className="w-25 btn btn-light ms-2"
-                        onClick={() => setShowOrders(true)}
+                        onClick={() => handleUserOne(user._id)}
                       >
                         Orders
                       </Button>
-
-                      <Modal
-                        show={showOrders}
-                        onHide={() => setShowOrders(false)}
-                        animation={false}
-                        size="lg"
-                        aria-labelledby="contained-modal-title-vcenter"
-                        centered
-                      >
-                        <Modal.Header closeButton>
-                          <Modal.Title id="contained-modal-title-vcenter ">
-                            All your orders
-                          </Modal.Title>
-                        </Modal.Header>
-                        <Modal.Body>
-                          <div className="container">
-                            <table className="table table-dark table-hover mt-3">
-                              <thead>
-                                <tr>
-                                  <th scope="col">#</th>
-                                  <th scope="col">Due Date</th>
-                                  <th scope="col">Product</th>
-                                  <th scope="col">Progress</th>
-                                </tr>
-                              </thead>
-                              <tbody>
-                                {/*user.map((user, index) => (
-                                  <tr key={user.id}>
-                                    <th scope="row">{index + 1}</th>
-                                    <td>{user.firstname}</td>
-                                    <td>{user.order.updatedAt}</td>
-                                    <td>
-                                      {order.state}
-                                      <div
-                                        className={`progress ${getClassNameState(
-                                          order.state
-                                        )}`}
-                                        role="progressbar"
-                                      ></div>
-                                    </td>
-                                  </tr>
-                                        ))*/}
-                              </tbody>
-                            </table>
-                          </div>
-                        </Modal.Body>
-                      </Modal>
+                      <OrderModal
+                        userList={userList}
+                        userId={userId}
+                        showOrders={showOrders}
+                        setShowOrders={setShowOrders}
+                      />
                     </td>
                   </tr>
                 ))}
