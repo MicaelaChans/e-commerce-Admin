@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
 import "../css/Home.css";
 import Sidebar from "./SideBar";
 import "../css/Sidebar.css";
@@ -9,6 +8,9 @@ import axios from "axios";
 import "../css/CreateAdmin.css"
 
 function StaffPanel() {
+  const authToken = localStorage.getItem("authToken");
+  const [showPassword, setShowPassword] = useState(false);
+
   const [adminsList, setAdminList] = useState([]);
   const [firstname, setFirstname] = useState("");
   const [lastname, setLastname] = useState("");
@@ -16,8 +18,6 @@ function StaffPanel() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [warningMsg, setWarningMsg] = useState("");
-
-  const authToken = localStorage.getItem("authToken");
 
   const getAdmins = async () => {
     try {
@@ -66,7 +66,7 @@ function StaffPanel() {
     try {
       const response = await axios({
         method: "DELETE",
-        url:`http://localhost:8000/admins/${adminId}`,
+        url: `http://localhost:8000/admins/${adminId}`,
         headers: {
           Authorization: `Bearer ${authToken}`,
         },
@@ -75,6 +75,10 @@ function StaffPanel() {
     } catch (error) {
       console.error(error);
     }
+  };
+
+  const toggleShowPassword = () => {
+    setShowPassword(!showPassword);
   };
 
   useEffect(() => {
@@ -144,7 +148,14 @@ function StaffPanel() {
                         onChange={(e) => setPassword(e.target.value)}
                         required
                       />
-                      <label htmlFor="">Password</label>
+                      <label htmlFor="password">Password</label>
+                      {password &&
+                        <i
+                          onClick={toggleShowPassword}
+                          className={`toggle-password-button bx ${showPassword ? "bxs-low-vision" : "bx-low-vision"
+                            }`}
+                        ></i>
+                      }
                     </div>
                   </div>
                   <button className="btn btn-light border rounded-5" type="submit">Create</button>
@@ -153,32 +164,34 @@ function StaffPanel() {
               <p className="text-danger text-center">{warningMsg}</p>
             </div>
 
-            <div className="mt-5">
-              <h2>Staff</h2>
-              <table className="table table-dark table-hover mt-3">
-                <thead>
-                  <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Firstname</th>
-                    <th scope="col">lastname</th>
-                    <th scope="col">Username</th>
-                    <th scope="col">Email</th>
-                    <th scope="col">Action</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {adminsList.map((admin, index) => (
-                    <tr key={admin.id}>
-                      <th scope="row">{index + 1}</th>
-                      <td>{admin.firstname}</td>
-                      <td>{admin.lastname}</td>
-                      <td>{admin.username}</td>
-                      <td>{admin.email}</td>
-                      <td><button onClick={() => handleDeleteAdmin(admin.id, admin.username)}>Delete</button></td>
+            <div className="rounded shadow bg-dark">
+              <div className="mt-5">
+                <h2>Staff List</h2>
+                <table className="table table-dark table-hover mt-3">
+                  <thead>
+                    <tr>
+                      <th scope="col">#</th>
+                      <th scope="col">Firstname</th>
+                      <th scope="col">lastname</th>
+                      <th scope="col">Username</th>
+                      <th scope="col">Email</th>
+                      <th scope="col">Action</th>
                     </tr>
-                  ))}
-                </tbody>
-              </table>
+                  </thead>
+                  <tbody>
+                    {adminsList.map((admin, index) => (
+                      <tr key={admin.id}>
+                        <th scope="row">{index + 1}</th>
+                        <td>{admin.firstname}</td>
+                        <td>{admin.lastname}</td>
+                        <td>{admin.username}</td>
+                        <td>{admin.email}</td>
+                        <td><button onClick={() => handleDeleteAdmin(admin.id, admin.username)}>Delete</button></td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
             </div>
           </div>
         </section>

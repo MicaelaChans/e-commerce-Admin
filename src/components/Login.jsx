@@ -11,6 +11,7 @@ import jwt from "jwt-decode";
 function Login() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -51,6 +52,10 @@ function Login() {
     }
   };
 
+  const toggleShowPassword = () => {
+    setShowPassword(!showPassword);
+  };
+
   return (
     <>
       <ToastContainer position="top-right" />
@@ -59,7 +64,7 @@ function Login() {
           <div className="form-value">
             <form method="POST" onSubmit={handleSubmit}>
               <h2>Login</h2>
-              <div className="register">
+              <div className="Subtext">
                 <p>Drachen Admin-Panel</p>
               </div>
               <div className="inputbox">
@@ -74,7 +79,7 @@ function Login() {
               </div>
               <div className="inputbox">
                 <input
-                  type="password"
+                  type={showPassword ? "text" : "password"}
                   name="password"
                   id="password"
                   value={password}
@@ -82,10 +87,17 @@ function Login() {
                   required
                 />
                 <label htmlFor="password">Password</label>
+                {password &&
+                  <i
+                  onClick={toggleShowPassword}
+                  className={`toggle-password-button bx ${
+                    showPassword ? "bxs-low-vision" : "bx-low-vision"
+                  }`}
+                ></i>
+                }
               </div>
-              <div className="forget"></div>
               <button>Log in</button>
-              <div className="register">
+              <div className="Subtext">
                 <p>
                   Forgot password? <a href="#">Contact an admin</a>
                 </p>
