@@ -59,7 +59,7 @@ function StaffPanel() {
       toast.error("Este usuario no se puede eliminar");
       return;
     }
-    if (username === authToken.admin.username) {
+    if (username === authToken.admin) {
       toast.error("No te puedes eliminar a vos mismo");
       return;
     }

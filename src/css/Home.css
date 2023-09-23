@@ -86,6 +86,11 @@ body {
     transition: var(--tran-04);
 }
 
+body{
+    background-image: url('../assets/background.svg');
+    background-repeat: repeat;
+}
+
 .home {
     position: absolute;
     top: 0;
@@ -95,7 +100,10 @@ body {
     width: calc(100% - 250px);
     background-color: var(--body-color);
     transition: var(--tran-05);
+    background-image: url('../assets/background.svg');
+    background-repeat: repeat;
 }
+
 .home .text {
     font-size: 30px;
     font-weight: 500;
