@@ -1,17 +1,15 @@
 import "../css/Home.css";
 import Sidebar from "./SideBar";
 import "../css/Sidebar.css";
-import PieCharts from "./PieChart";
-import LineCharts from "./LineChart";
-import Barcharts from "./BarCharts";
+import PieCharts from "./Partials/PieChart";
+import LineCharts from "./Partials/LineChart";
+import Barcharts from "./Partials/BarCharts";
 //import Orders from "./Orders";
 import "../css/Charts.css";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 function Home() {
-
-
   return (
     <>
       <div className="container ">

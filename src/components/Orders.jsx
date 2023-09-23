@@ -31,7 +31,7 @@ function Orders() {
       }
     };
     getOrders();
-  }, [orderList]);
+  }, [authToken]);
 
   const handleRemoveOrder = (orderId) => {
     dispatch(removeOrder(orderId));

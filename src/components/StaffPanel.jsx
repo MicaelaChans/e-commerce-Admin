@@ -44,7 +44,6 @@ function StaffPanel() {
         Authorization: `Bearer ${authToken}`,
       },
     });
-    console.log(response.data);
 
     if (response.data === "existent email already") {
       setWarningMsg("There's an existing account with this email");

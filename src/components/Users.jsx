@@ -1,33 +1,16 @@
 import axios from "axios";
-import React from "react";
-import { useState } from "react";
-import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import React, { useState, useEffect } from "react";
 import Sidebar from "../components/SideBar";
-import { ToastContainer, toast } from "react-toastify";
-
 import Button from "react-bootstrap/Button";
-import Modal from "react-bootstrap/Modal";
 import OrderModal from "./OrderModal";
 import ModifyModal from "./ModifyModal";
 
 function Users() {
   const authToken = localStorage.getItem("authToken");
 
-  const dispatch = useDispatch();
-  const admin = useSelector((state) => state.admin);
   const [userList, setUserList] = useState([]);
-  const [userId, setUserId] = useState("");
-  const [showModify, setShowModify] = useState(false);
-  const [showOrders, setShowOrders] = useState(false);
-
-  const [userData, setUserData] = useState({
-    firstname: "",
-    lastname: "",
-    email: "",
-    address: "",
-    phone: "",
-  });
+  const [openModifyModal, setOpenModifyModal] = useState({});
+  const [openOrderModal, setOpenOrderModal] = useState({});
 
   useEffect(() => {
     const getUsers = async () => {
@@ -45,11 +28,22 @@ function Users() {
       }
     };
     getUsers();
-  },[authToken]);
+  });
 
-  const handleUserOne = (userId) => {
-    setUserId(userId);
-    setShowOrders(true);
+  const toggleModifyModal = (userId) => {
+    setOpenModifyModal((prevState) => ({
+      ...prevState,
+      [userId]: !prevState[userId],
+    }));
+  };
+
+  const toggleOrderModal = (userId) => {
+    if (userId) {
+      setOpenOrderModal((prevState) => ({
+        ...prevState,
+        [userId]: !prevState[userId],
+      }));
+    }
   };
 
   return (
@@ -79,26 +73,36 @@ function Users() {
                     <td>
                       <Button
                         className="w-25 btn btn-light ms-2"
-                        onClick={() => setShowModify(true)}
+                        onClick={() => toggleModifyModal(user.id)}
                       >
                         Modify
                       </Button>
                       <ModifyModal
-                        showModify={showModify}
-                        setShowModify={setShowModify}
+                        showModify={openModifyModal[user.id] || false}
+                        setShowModify={(show) =>
+                          setOpenModifyModal({
+                            ...openModifyModal,
+                            [user.id]: show,
+                          })
+                        }
+                        UserID={user.id}
                       />
 
                       <Button
                         className="w-25 btn btn-light ms-2"
-                        onClick={() => handleUserOne(user._id)}
+                        onClick={() => toggleOrderModal(user.id)}
                       >
                         Orders
                       </Button>
                       <OrderModal
-                        userList={userList}
-                        userId={userId}
-                        showOrders={showOrders}
-                        setShowOrders={setShowOrders}
+                        showOrders={openOrderModal[user.id] || false}
+                        setShowOrders={(show) =>
+                          setOpenOrderModal({
+                            ...openOrderModal,
+                            [user.id]: show,
+                          })
+                        }
+                        UserID={user.id}
                       />
                     </td>
                   </tr>

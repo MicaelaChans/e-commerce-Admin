@@ -1,18 +1,13 @@
 import axios from "axios";
-import React from "react";
-import { useState } from "react";
-import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import React, { useEffect, useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 
-function ModifyModal({ showModify, setShowModify }) {
+function ModifyModal({ showModify, setShowModify, UserID }) {
   const authToken = localStorage.getItem("authToken");
 
-  const dispatch = useDispatch();
-  const [userList, setUserList] = useState([]);
-  const [userData, setUserData] = useState({
+  const [user, setUser] = useState({
     firstname: "",
     lastname: "",
     email: "",
@@ -20,34 +15,58 @@ function ModifyModal({ showModify, setShowModify }) {
     phone: "",
   });
 
+  const [warningMsg, setWarningMsg] = useState("");
+
   useEffect(() => {
-    const getUsers = async () => {
+    const getUser = async () => {
       try {
-        const response = await axios({
-          method: "GET",
-          url: "http://localhost:8000/users",
+        const response = await axios.get(`http://localhost:8000/users/${UserID}`, {
           headers: {
             Authorization: `Bearer ${authToken}`,
           },
         });
-        setUserList(response.data);
+        setUser(response.data);
       } catch (error) {
-        console.log(error);
+        console.error(error);
       }
     };
-    getUsers();
-  });
+    getUser();
+  }, [UserID, authToken]);
 
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setUserData((prevUserData) => ({
-      ...prevUserData,
-      [name]: value,
-    }));
+  const Modifie = async () => {
+    try {
+      const response = await axios.patch(
+        `http://localhost:8000/users/${UserID}`,
+        {
+          firstname: user.firstname,
+          lastname: user.lastname,
+          email: user.email,
+          address: user.address,
+          phone: user.phone,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${authToken}`,
+          },
+        }
+      );
+
+      if (response.data === "existent email already") {
+        setWarningMsg("There's an existing account with this email");
+      } else if (response.data === "existent phone already") {
+        setWarningMsg("There's an existing account with this phone");
+      } else {
+        toast.success("User modified");
+        setShowModify(false);
+      }
+    } catch (error) {
+      console.error(error);
+      setWarningMsg("Error modifying user. Please try again.");
+    }
   };
 
   const handleSave = () => {
-    setShowModify(false);
+    Modifie();
   };
 
   return (
@@ -61,7 +80,7 @@ function ModifyModal({ showModify, setShowModify }) {
     >
       <Modal.Header closeButton>
         <Modal.Title id="contained-modal-title-vcenter">
-          Modifie User
+          Modify User
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>
@@ -71,10 +90,9 @@ function ModifyModal({ showModify, setShowModify }) {
             <input
               className="ms-2 border-0 w-100 ps-2"
               type="text"
-              placeholder={userData.firstname}
-              name="firstname"
-              value={userData.firstname}
-              onChange={handleInputChange}
+              placeholder={user.firstname}
+              value={user.firstname}
+              onChange={(e) => setUser({ ...user, firstname: e.target.value })}
             />
           </h6>
           <h6>
@@ -82,10 +100,9 @@ function ModifyModal({ showModify, setShowModify }) {
             <input
               className="ms-2 border-0 w-100 ps-2"
               type="text"
-              placeholder={userData.lastname}
-              name="lastname"
-              value={userData.lastname}
-              onChange={handleInputChange}
+              placeholder={user.lastname}
+              value={user.lastname}
+              onChange={(e) => setUser({ ...user, lastname: e.target.value })}
             />
           </h6>
           <h6>
@@ -93,10 +110,9 @@ function ModifyModal({ showModify, setShowModify }) {
             <input
               className="ms-2 border-0 w-100 ps-2"
               type="text"
-              placeholder={userData.email}
-              name="email"
-              value={userData.email}
-              onChange={handleInputChange}
+              placeholder={user.email}
+              value={user.email}
+              onChange={(e) => setUser({ ...user, email: e.target.value })}
             />
           </h6>
           <h6>
@@ -104,10 +120,9 @@ function ModifyModal({ showModify, setShowModify }) {
             <input
               className="ms-2 border-0 w-100 ps-2"
               type="text"
-              placeholder={userData.address}
-              name="address"
-              value={userData.address}
-              onChange={handleInputChange}
+              placeholder={user.address}
+              value={user.address}
+              onChange={(e) => setUser({ ...user, address: e.target.value })}
             />
           </h6>
           <h6>
@@ -115,10 +130,9 @@ function ModifyModal({ showModify, setShowModify }) {
             <input
               className="ms-2 border-0 w-100 ps-2"
               type="text"
-              placeholder={userData.phone}
-              name="phone"
-              value={userData.phone}
-              onChange={handleInputChange}
+              placeholder={user.phone}
+              value={user.phone}
+              onChange={(e) => setUser({ ...user, phone: e.target.value })}
             />
           </h6>
         </div>
