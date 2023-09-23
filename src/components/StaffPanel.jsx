@@ -59,12 +59,18 @@ function StaffPanel() {
       toast.error("Este usuario no se puede eliminar");
       return;
     }
-    if (username === authToken.admin) {
+    if (username === authToken.username) {
       toast.error("No te puedes eliminar a vos mismo");
       return;
     }
     try {
-      const response = await axios.delete(`http://localhost:8000/admins/${adminId}`);
+      const response = await axios({
+        method: "DELETE",
+        url:`http://localhost:8000/admins/${adminId}`,
+        headers: {
+          Authorization: `Bearer ${authToken}`,
+        },
+      });
       console.log(response.data);
     } catch (error) {
       console.error(error);

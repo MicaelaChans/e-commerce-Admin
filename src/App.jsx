@@ -5,23 +5,15 @@ import Login from "./components/Login";
 import StaffPanel from "./components/StaffPanel";
 import Orders from "./components/Orders";
 import Users from "./components/Users";
-import PropTypes from 'prop-types';
 
 function App() {
-
   const PrivateRoute = ({ children }) => {
     const authToken = localStorage.getItem("authToken");
-    
     if (!authToken) {
-      console.log("Redirigiendo a /login");
       return <Navigate to="/login" />;
     }
       return children;
   }
-
-  PrivateRoute.propTypes = {
-    children: PropTypes.node.isRequired,
-  };
 
   return (
     <>
