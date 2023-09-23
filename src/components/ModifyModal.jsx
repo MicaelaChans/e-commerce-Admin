@@ -8,6 +8,8 @@ import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 
 function ModifyModal({ showModify, setShowModify }) {
+  const authToken = localStorage.getItem("authToken");
+
   const dispatch = useDispatch();
   const [userList, setUserList] = useState([]);
   const [userData, setUserData] = useState({
@@ -24,6 +26,9 @@ function ModifyModal({ showModify, setShowModify }) {
         const response = await axios({
           method: "GET",
           url: "http://localhost:8000/users",
+          headers: {
+            Authorization: `Bearer ${authToken}`,
+          },
         });
         setUserList(response.data);
       } catch (error) {
@@ -31,7 +36,7 @@ function ModifyModal({ showModify, setShowModify }) {
       }
     };
     getUsers();
-  }, []);
+  });
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;

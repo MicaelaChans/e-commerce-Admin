@@ -13,7 +13,7 @@
   height: 220px;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: start;
   background: rgb(255, 215, 158);
   background: linear-gradient(
     90deg,
@@ -29,7 +29,7 @@
   height: 220px;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: start;
   background: rgb(158, 210, 255);
   background: linear-gradient(
     90deg,
@@ -45,7 +45,7 @@
   height: 220px;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: start;
   background: rgb(218, 184, 255);
   background: linear-gradient(
     90deg,

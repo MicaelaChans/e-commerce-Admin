@@ -27,6 +27,7 @@ function Login() {
       if (response.data.token) {
         const id = jwt(response.data.token).sub;
         const username = jwt(response.data.token).username;
+        localStorage.setItem("authToken", response.data.token);
         dispatch(
           login({
             token: response.data.token,
@@ -75,11 +76,12 @@ function Login() {
                 <input
                   type="password"
                   name="password"
+                  id="password"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   required
                 />
-                <label htmlFor="">Password</label>
+                <label htmlFor="password">Password</label>
               </div>
               <div className="forget"></div>
               <button>Log in</button>

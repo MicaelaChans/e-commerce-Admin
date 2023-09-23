@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
 import { logout } from "../redux/adminSlice";
 import { useDispatch } from "react-redux";
 
@@ -12,12 +11,12 @@ function Sidebar() {
     setIsSidebarOpen(!isSidebarOpen);
   };
 
-  const navigate = useNavigate();
   const dispatch = useDispatch();
 
   const handleLogout = () => {
     dispatch(logout(null));
-    navigate("/login");
+    localStorage.removeItem("authToken");
+    window.location.href = "/login";
   };
 
   // const toggleDarkMode = () => {

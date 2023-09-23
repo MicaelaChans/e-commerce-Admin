@@ -9,7 +9,6 @@ import axios from "axios";
 import "../css/CreateAdmin.css"
 
 function StaffPanel() {
-  const admin = useSelector((state) => state.admin);
   const [adminsList, setAdminList] = useState([]);
   const [firstname, setFirstname] = useState("");
   const [lastname, setLastname] = useState("");
@@ -18,13 +17,15 @@ function StaffPanel() {
   const [password, setPassword] = useState("");
   const [warningMsg, setWarningMsg] = useState("");
 
+  const authToken = localStorage.getItem("authToken");
+
   const getAdmins = async () => {
     try {
       const response = await axios({
         method: "GET",
         url: "http://localhost:8000/admins",
         headers: {
-          Authorization: "Bearer " + (admin.admin && admin.admin.token),
+          Authorization: `Bearer ${authToken}`,
         },
       });
       setAdminList(response.data);
@@ -40,7 +41,7 @@ function StaffPanel() {
       url: `http://localhost:8000/admins`,
       data: { firstname, lastname, username, email, password },
       headers: {
-        Authorization: "Bearer " + (admin.admin && admin.admin.token),
+        Authorization: `Bearer ${authToken}`,
       },
     });
     console.log(response.data);
@@ -59,7 +60,7 @@ function StaffPanel() {
       toast.error("Este usuario no se puede eliminar");
       return;
     }
-    if (username === admin.admin.username) {
+    if (username === authToken.admin.username) {
       toast.error("No te puedes eliminar a vos mismo");
       return;
     }

@@ -12,6 +12,8 @@ import OrderModal from "./OrderModal";
 import ModifyModal from "./ModifyModal";
 
 function Users() {
+  const authToken = localStorage.getItem("authToken");
+
   const dispatch = useDispatch();
   const admin = useSelector((state) => state.admin);
   const [userList, setUserList] = useState([]);
@@ -34,7 +36,7 @@ function Users() {
           method: "GET",
           url: "http://localhost:8000/users",
           headers: {
-            Authorization: "Bearer " + (admin.admin && admin.admin.token),
+            Authorization: `Bearer ${authToken}`,
           },
         });
         setUserList(response.data);
@@ -43,7 +45,7 @@ function Users() {
       }
     };
     getUsers();
-  }, [admin]);
+  },[authToken]);
 
   const handleUserOne = (userId) => {
     setUserId(userId);
