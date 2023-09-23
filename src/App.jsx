@@ -46,30 +46,3 @@ function App() {
 }
 
 export default App;
-
-// const navigate = useNavigate();
-// const admin = useSelector((state) => state.admin);
-
-//   useEffect(() => {
-//     console.log("Ejecutando useEffect en Home");
-//     console.log("Estado admin:", admin);
-  
-//     if (!admin.admin) {
-//       console.log("Redirigiendo a /login");
-//       navigate("/login");
-//     }
-//   }, []);
-
-
-  // useEffect(() => {
-  //   console.log("Ejecutando useEffect en Home");
-  //   console.log("Estado admin:", admin);
-  //   const PrivateRoute = ({ element, path}) => {
-  //     if (!admin.admin) {
-  //       console.log("Redirigiendo a /login");
-  //       navigate("/login");
-  //     } else {
-  //       return <Route path={path} element={element} />;
-  //     }
-  //   }
-  // }, [PrivateRoute]);
