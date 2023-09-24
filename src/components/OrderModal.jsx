@@ -2,6 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import Modal from "react-bootstrap/Modal";
+import { formatDistanceToNow } from "date-fns";
 
 function OrderModal({ showOrders, setShowOrders, UserID }) {
   const [userOrders, setUserOrders] = useState([]);
@@ -11,13 +12,16 @@ function OrderModal({ showOrders, setShowOrders, UserID }) {
   useEffect(() => {
     const getUserOrders = async () => {
       try {
-        const response = await axios.get(`http://localhost:8000/users/${UserID}/orders`, {
-          headers: {
-            Authorization: `Bearer ${authToken}`,
-          },
-        });
+        const response = await axios.get(
+          `http://localhost:8000/users/${UserID}/orders`,
+          {
+            headers: {
+              Authorization: `Bearer ${authToken}`,
+            },
+          }
+        );
         setUserOrders(response.data);
-        console.log(response.data)
+        console.log(response.data);
       } catch (error) {
         console.error(error);
       }
@@ -30,22 +34,25 @@ function OrderModal({ showOrders, setShowOrders, UserID }) {
           },
         });
         setProductList(response.data);
-        console.log(response.data)
+        console.log(response.data);
       } catch (error) {
         console.error(error);
       }
-    }
+    };
     getProducts();
     getUserOrders();
   }, [UserID, authToken]);
 
   const handleOrderDetails = async (orderId) => {
     try {
-      const response = await axios.get(`http://localhost:8000/orders/${orderId}`, {
-        headers: {
-          Authorization: `Bearer ${authToken}`,
-        },
-      });
+      const response = await axios.get(
+        `http://localhost:8000/orders/${orderId}`,
+        {
+          headers: {
+            Authorization: `Bearer ${authToken}`,
+          },
+        }
+      );
       setSelectedOrder(response.data);
     } catch (error) {
       console.log(error);
@@ -80,29 +87,37 @@ function OrderModal({ showOrders, setShowOrders, UserID }) {
               </tr>
             </thead>
             <tbody>
-                {userOrders.map((order, index) => (
-                  <tr key={order.id}>
-                    <th scope="row">{index + 1}</th>
-                    <td>{order.updatedAt}</td>
-                    <td>
-                      {order.products.map((productID, productIndex) => {
-                        const product = productList.find((product) => product.id === productID);
-                        if (product) {
-                          return <div key={productIndex}>{product.name}</div>;
-                        } else {
-                          return <div key={productIndex}>Producto no encontrado</div>;
-                        }
-                      })}
-                    </td>
-                    <td>{order.address}</td>
-                    <td>{order.state}</td>
-                    <td>
-                      <button onClick={() => handleOrderDetails(order.id)}>
-                        Details
-                      </button>
-                    </td>
-                  </tr>
-                ))}
+              {userOrders.map((order, index) => (
+                <tr key={order.id}>
+                  <th scope="row">{index + 1}</th>
+                  <td>
+                    {formatDistanceToNow(new Date(order.updatedAt), {
+                      addSuffix: true,
+                    })}
+                  </td>
+                  <td>
+                    {order.products.map((productID, productIndex) => {
+                      const product = productList.find(
+                        (product) => product.id === productID
+                      );
+                      if (product) {
+                        return <div key={productIndex}>{product.name}</div>;
+                      } else {
+                        return (
+                          <div key={productIndex}>Producto no encontrado</div>
+                        );
+                      }
+                    })}
+                  </td>
+                  <td>{order.address}</td>
+                  <td>{order.state}</td>
+                  <td>
+                    <button onClick={() => handleOrderDetails(order.id)}>
+                      Details
+                    </button>
+                  </td>
+                </tr>
+              ))}
             </tbody>
           </table>
         </div>
@@ -136,7 +151,6 @@ function OrderModal({ showOrders, setShowOrders, UserID }) {
           </Modal.Body>
         </Modal>
       )}
-
     </Modal>
   );
 }

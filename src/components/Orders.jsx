@@ -7,6 +7,7 @@ import axios from "axios";
 import Sidebar from "../components/SideBar";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
+import { formatDistanceToNow } from "date-fns";
 
 function Orders() {
   const authToken = localStorage.getItem("authToken");
@@ -75,7 +76,11 @@ function Orders() {
                   <tr key={order.id}>
                     <th scope="row">{index + 1}</th>
                     <td>{order.user.firstname}</td>
-                    <td>{order.updatedAt}</td>
+                    <td>
+                      {formatDistanceToNow(new Date(order.updatedAt), {
+                        addSuffix: true,
+                      })}
+                    </td>
                     <td>
                       {order.state}
                       <div
@@ -97,7 +102,10 @@ function Orders() {
                           aria-labelledby="contained-modal-title-vcenter"
                           centered
                         >
-                          <Modal.Header className="bg-dark text-white" closeButton>
+                          <Modal.Header
+                            className="bg-dark text-white"
+                            closeButton
+                          >
                             <Modal.Title id="contained-modal-title-vcenter">
                               Update Order
                             </Modal.Title>
@@ -141,7 +149,6 @@ function Orders() {
               </tbody>
             </table>
           </div>
-
         </section>
       </div>
     </>

@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import Modal from "react-bootstrap/Modal";
+import { formatDistanceToNow } from "date-fns";
 
 function OrderModal({ showOrders, setShowOrders, UserID }) {
   const authToken = localStorage.getItem("authToken");
@@ -14,11 +15,14 @@ function OrderModal({ showOrders, setShowOrders, UserID }) {
     const getUserOrders = async () => {
       try {
         if (UserID) {
-          const response = await axios.get(`http://localhost:8000/users/${UserID}`, {
-            headers: {
-              Authorization: `Bearer ${authToken}`,
-            },
-          });
+          const response = await axios.get(
+            `http://localhost:8000/users/${UserID}`,
+            {
+              headers: {
+                Authorization: `Bearer ${authToken}`,
+              },
+            }
+          );
           const userData = response.data;
 
           if (userData && userData.orders) {
@@ -78,7 +82,11 @@ function OrderModal({ showOrders, setShowOrders, UserID }) {
                 userOrders.orders.map((order, index) => (
                   <tr key={order.id}>
                     <th scope="row">{index + 1}</th>
-                    <td>{order.updatedAt}</td>
+                    <td>
+                      {formatDistanceToNow(new Date(order.updatedAt), {
+                        addSuffix: true,
+                      })}
+                    </td>
                     <td>
                       {order.products.map((product, productIndex) => (
                         <div key={productIndex}>{product.name}</div>
