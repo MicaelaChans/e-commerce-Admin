@@ -1,7 +1,7 @@
-.CreateAdmin{
-	position: relative;
-    background: transparent;
-    border: 2px solid rgba(255,255,255,0.5);
-    border-radius: 20px;
-    background-color: rgb(94, 89, 85);
+.createAdmin {
+  position: relative;
+  background: transparent;
+  border: 2px solid rgba(186, 184, 184, 0.5);
+  border-radius: 5px;
+  background-color: #272727;
 }

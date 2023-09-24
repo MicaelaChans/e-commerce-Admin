@@ -5,7 +5,7 @@ import "../css/Sidebar.css";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import axios from "axios";
-import "../css/CreateAdmin.css"
+import "../css/CreateAdmin.css";
 
 function StaffPanel() {
   const authToken = localStorage.getItem("authToken");
@@ -14,7 +14,7 @@ function StaffPanel() {
   const [adminsList, setAdminList] = useState([]);
   const [firstname, setFirstname] = useState("");
   const [lastname, setLastname] = useState("");
-  const [username, setUsername] = useState("")
+  const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [warningMsg, setWarningMsg] = useState("");
@@ -55,7 +55,7 @@ function StaffPanel() {
   };
 
   const handleDeleteAdmin = async (adminId, username) => {
-    if (username === 'admin') {
+    if (username === "admin") {
       toast.error("Este usuario no se puede eliminar");
       return;
     }
@@ -92,8 +92,7 @@ function StaffPanel() {
         <section className="home">
           <div className="text">Staff Panel</div>
           <div className="container">
-
-            <div className="CreateAdmin shadow p-4">
+            <div className="createAdmin shadow p-4">
               <form method="POST" onSubmit={handleSubmit}>
                 <h2>Register Staff member</h2>
                 <div className="row">
@@ -149,25 +148,31 @@ function StaffPanel() {
                         required
                       />
                       <label htmlFor="password">Password</label>
-                      {password &&
+                      {password && (
                         <i
                           onClick={toggleShowPassword}
-                          className={`toggle-password-button bx ${showPassword ? "bxs-low-vision" : "bx-low-vision"
-                            }`}
+                          className={`toggle-password-button bx ${
+                            showPassword ? "bxs-low-vision" : "bx-low-vision"
+                          }`}
                         ></i>
-                      }
+                      )}
                     </div>
                   </div>
-                  <button className="btn btn-light border rounded-5" type="submit">Create</button>
+                  <button
+                    className="btn btn-light border rounded-5"
+                    type="submit"
+                  >
+                    Create
+                  </button>
                 </div>
               </form>
               <p className="text-danger text-center">{warningMsg}</p>
             </div>
 
-            <div className="rounded shadow bg-dark">
-              <div className="mt-5">
+            <div className="rounded shadow bg-dark createAdmin mt-4">
+              <div className="mt-4">
                 <h2>Staff List</h2>
-                <table className="table table-dark table-hover mt-3">
+                <table className="table table-dark table-hover mt-3 text-center ">
                   <thead>
                     <tr>
                       <th scope="col">#</th>
@@ -186,7 +191,21 @@ function StaffPanel() {
                         <td>{admin.lastname}</td>
                         <td>{admin.username}</td>
                         <td>{admin.email}</td>
-                        <td><button onClick={() => handleDeleteAdmin(admin.id, admin.username)}>Delete</button></td>
+                        <td>
+                          {admin.username !== "admin" && (
+                            <button
+                              className="w-50"
+                              onClick={() =>
+                                handleDeleteAdmin(admin.id, admin.username)
+                              }
+                            >
+                              Delete
+                            </button>
+                          )}
+                          {admin.username === "admin" && (
+                            <span>Default admin</span>
+                          )}
+                        </td>
                       </tr>
                     ))}
                   </tbody>
@@ -198,9 +217,7 @@ function StaffPanel() {
       </div>
       <ToastContainer position="top-right" />
     </>
-  )
+  );
 }
 
 export default StaffPanel;
-
-
