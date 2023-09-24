@@ -157,13 +157,13 @@ function StaffPanel() {
                         ></i>
                       )}
                     </div>
+                    <button
+                      className="btn btn-light border rounded-5 w-50"
+                      type="submit"
+                    >
+                      Create
+                    </button>
                   </div>
-                  <button
-                    className="btn btn-light border rounded-5"
-                    type="submit"
-                  >
-                    Create
-                  </button>
                 </div>
               </form>
               <p className="text-danger text-center">{warningMsg}</p>

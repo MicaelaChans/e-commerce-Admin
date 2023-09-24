@@ -8,6 +8,7 @@ import Sidebar from "../components/SideBar";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import { formatDistanceToNow } from "date-fns";
+import { removeOrder } from "../redux/orderSlice";
 
 function Orders() {
   const authToken = localStorage.getItem("authToken");
@@ -102,23 +103,20 @@ function Orders() {
                           aria-labelledby="contained-modal-title-vcenter"
                           centered
                         >
-                          <Modal.Header
-                            className="bg-dark text-white"
-                            closeButton
-                          >
+                          <Modal.Header closeButton>
                             <Modal.Title id="contained-modal-title-vcenter">
                               Update Order
                             </Modal.Title>
                           </Modal.Header>
-                          <Modal.Body className="bg-dark text-white">
+                          <Modal.Body className=" text-white">
                             <div className="container"></div>
                           </Modal.Body>
-                          <Modal.Footer className="bg-dark d-flex ">
+                          <Modal.Footer className=" d-flex ">
                             <div className="d-flex flex-row gap-3">
                               <div>
                                 <Button
-                                  variant="light text-black"
-                                  className="btn btn-outline-light w-100"
+                                  variant="text-black"
+                                  className="btn btn-dark w-100"
                                   onClick={() => setShowUpdate(false)}
                                 >
                                   Cancel
@@ -126,8 +124,8 @@ function Orders() {
                               </div>
                               <div>
                                 <Button
-                                  variant="light text-black"
-                                  className="btn btn-outline-light w-100"
+                                  variant="text-black"
+                                  className="btn btn-dark w-100"
                                   onClick={() => setShowUpdate(false)}
                                 >
                                   save
