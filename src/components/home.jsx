@@ -9,7 +9,6 @@ import "../css/Charts.css";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import RevenueCards from "./Partials/RevenueCards.jsx";
-import '../css/Cards.css'
 
 function Home() {
   return (
@@ -22,7 +21,7 @@ function Home() {
             <div className="row">
               <div className="container mt-3">
                 <h2 className="mt-3 text-center">Revenue</h2>
-                <RevenueCards/>
+                <RevenueCards />
               </div>
               <div className="container mt-3">
                 <h2 className="mt-3 text-center">Analytics</h2>

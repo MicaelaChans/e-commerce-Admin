@@ -61,7 +61,7 @@ function Sidebar() {
             </li>
 
             <li className="nav-link">
-              <NavLink to="#" className="text-decoration-none">
+              <NavLink to="/notifications" className="text-decoration-none">
                 <div id="a">
                   <i className="bx bx-bell icon bx-tada-hover"></i>
                   <span className="text nav-text">Notifications</span>
@@ -70,7 +70,7 @@ function Sidebar() {
             </li>
 
             <li className="nav-link">
-              <NavLink to="#" className="text-decoration-none">
+              <NavLink to="/revenue" className="text-decoration-none">
                 <div id="a">
                   <i className="bx bx-bar-chart-alt-2 icon"></i>
                   <span className="text nav-text">Revenue</span>
@@ -79,7 +79,7 @@ function Sidebar() {
             </li>
 
             <li className="nav-link">
-              <NavLink to="#" className="text-decoration-none">
+              <NavLink to="/analytics" className="text-decoration-none">
                 <div id="a">
                   <i className="bx bx-pie-chart-alt icon"></i>
                   <span className="text nav-text">Analytics</span>
