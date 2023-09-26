@@ -88,6 +88,15 @@ function Sidebar() {
             </li>
 
             <li className="nav-link">
+              <NavLink to="/products" className="text-decoration-none">
+                <div id="a">
+                  <i className='bx bx-edit icon'></i>
+                  <span className="text nav-text">Products</span>
+                </div>
+              </NavLink>
+            </li>
+
+            <li className="nav-link">
               <NavLink to="/orders" className="text-decoration-none">
                 <div id="a">
                   <i className="bx bx-package icon"></i>

@@ -51,7 +51,7 @@ function Users() {
       <Sidebar />
       <section className="home">
         <div className="text">Users</div>
-        <div className="container letters">
+        <div className="container">
           <div className="container mt-3 text-center">
             <table className="table table-dark table-hover mt-3">
               <thead>

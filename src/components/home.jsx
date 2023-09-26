@@ -9,6 +9,7 @@ import "../css/Charts.css";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import RevenueCards from "./Partials/RevenueCards.jsx";
+import "../css/Cards.css"
 
 function Home() {
   return (
@@ -17,7 +18,7 @@ function Home() {
         <Sidebar />
         <section className="home">
           <div className="text">Dashboard - Drachen</div>
-          <div className="container letters">
+          <div className="container">
             <div className="row">
               <div className="container mt-3">
                 <h2 className="mt-3 text-center">Revenue</h2>
