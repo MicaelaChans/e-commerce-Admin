@@ -1,62 +1,62 @@
 .bg {
-    width: 420px;
-    height: 220px;
-    display: flex;
-    justify-content: center;
-    align-items: start;
-    background: rgb(255, 215, 158);
-    background: linear-gradient(
-        90deg,
-        rgba(255, 215, 158, 1) 22%,
-        rgb(255, 195, 167) 77%
-    );
-    backdrop-filter: blur(5px);
-    border-radius: 5px;
-    color: black;
+  width: 420px;
+  height: 220px;
+  display: flex;
+  justify-content: center;
+  align-items: start;
+  background: rgb(255, 215, 158);
+  background: linear-gradient(
+    90deg,
+    rgba(255, 215, 158, 1) 22%,
+    rgb(255, 195, 167) 77%
+  );
+  backdrop-filter: blur(5px);
+  border-radius: 5px;
+  color: black;
 }
 
 .bgimg {
-    background-image: url("../assets/subtle-prism2.svg");
+  background-image: url("../assets/subtle-prism2.svg");
 }
 
 .bg2 {
-    width: 420px;
-    height: 220px;
-    display: flex;
-    justify-content: center;
-    align-items: start;
-    background: rgb(158, 210, 255);
-    background: linear-gradient(
-        90deg,
-        rgba(158, 210, 255, 1) 22%,
-        rgba(134, 255, 241, 1) 77%
-    );
-    backdrop-filter: blur(5px);
-    border-radius: 5px;
-    color: black;
+  width: 420px;
+  height: 220px;
+  display: flex;
+  justify-content: center;
+  align-items: start;
+  background: rgb(158, 210, 255);
+  background: linear-gradient(
+    90deg,
+    rgba(158, 210, 255, 1) 22%,
+    rgba(134, 255, 241, 1) 77%
+  );
+  backdrop-filter: blur(5px);
+  border-radius: 5px;
+  color: black;
 }
 
 .bgimg2 {
-    background-image: url("../assets/subtle-prism.svg");
+  background-image: url("../assets/subtle-prism.svg");
 }
 
 .bg3 {
-    width: 420px;
-    height: 220px;
-    display: flex;
-    justify-content: center;
-    align-items: start;
-    background: rgb(218, 184, 255);
-    background: linear-gradient(
-        90deg,
-        rgb(184, 255, 198) 24%,
-        rgb(176, 255, 170) 73%
-    );
-    backdrop-filter: blur(5px);
-    border-radius: 5px;
-    color: black;
+  width: 420px;
+  height: 220px;
+  display: flex;
+  justify-content: center;
+  align-items: start;
+  background: rgb(218, 184, 255);
+  background: linear-gradient(
+    90deg,
+    rgb(184, 255, 198) 24%,
+    rgb(176, 255, 170) 73%
+  );
+  backdrop-filter: blur(5px);
+  border-radius: 5px;
+  color: black;
 }
 
 .bgimg3 {
-    background-image: url("../assets/subtle-prism3.svg");
+  background-image: url("../assets/subtle-prism3.svg");
 }

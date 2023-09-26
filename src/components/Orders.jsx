@@ -1,7 +1,6 @@
 import React from "react";
 import "../css/Orders.css";
 import { useDispatch, useSelector } from "react-redux";
-//import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import Sidebar from "../components/SideBar";

@@ -20,11 +20,14 @@ function ModifyModal({ showModify, setShowModify, UserID }) {
   useEffect(() => {
     const getUser = async () => {
       try {
-        const response = await axios.get(`http://localhost:8000/users/${UserID}`, {
-          headers: {
-            Authorization: `Bearer ${authToken}`,
-          },
-        });
+        const response = await axios.get(
+          `http://localhost:8000/users/${UserID}`,
+          {
+            headers: {
+              Authorization: `Bearer ${authToken}`,
+            },
+          }
+        );
         setUser(response.data);
       } catch (error) {
         console.error(error);

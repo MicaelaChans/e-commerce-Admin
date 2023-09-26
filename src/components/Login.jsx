@@ -87,14 +87,14 @@ function Login() {
                   required
                 />
                 <label htmlFor="password">Password</label>
-                {password &&
+                {password && (
                   <i
-                  onClick={toggleShowPassword}
-                  className={`toggle-password-button bx ${
-                    showPassword ? "bxs-low-vision" : "bx-low-vision"
-                  }`}
-                ></i>
-                }
+                    onClick={toggleShowPassword}
+                    className={`toggle-password-button bx ${
+                      showPassword ? "bxs-low-vision" : "bx-low-vision"
+                    }`}
+                  ></i>
+                )}
               </div>
               <button>Log in</button>
               <div className="Subtext">

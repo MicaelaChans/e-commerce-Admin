@@ -5,8 +5,6 @@ import { useDispatch } from "react-redux";
 
 function Sidebar() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-  // const [isDarkMode, setIsDarkMode] = useState(false);
-
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
   };
@@ -18,10 +16,6 @@ function Sidebar() {
     localStorage.removeItem("authToken");
     window.location.href = "/login";
   };
-
-  // const toggleDarkMode = () => {
-  // 	setIsDarkMode(!isDarkMode);
-  // };
 
   return (
     <nav className={`sidebar ${isSidebarOpen ? "close" : ""}`}>
@@ -128,20 +122,6 @@ function Sidebar() {
               </div>
             </NavLink>
           </li>
-
-          {/* <li className="mode" onClick={toggleDarkMode}>
-						<div className="sun-moon">
-							<i className={`bx ${isDarkMode ? 'bx-sun' : 'bx-moon'} icon moon`}></i>
-							<i className={`bx ${isDarkMode ? 'bx-sun' : 'bx-moon'} icon sun`}></i>
-						</div>
-						<span className="mode-text text">{isDarkMode ? 'Light mode' : 'Dark mode'}</span>
-						<div className="toggle-switch">
-							<span
-								className={`switch ${isDarkMode ? 'on' : 'off'}`}
-								onClick={toggleDarkMode}
-							></span>
-						</div>
-					</li> */}
         </div>
       </div>
     </nav>

@@ -1,33 +1,33 @@
-@import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Anton&display=swap");
 
-.notFound{
-	color: white;
-	justify-content:center;
-	align-items:center;
-	display:flex;
-	flex-direction:column;
-	height:100vh;
-	width:100vw;
+.notFound {
+  color: white;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  width: 100vw;
 }
 .num {
-	font-size: 20em;
-	text-shadow: -8px 9px #000000;
-	font-family: 'Anton', sans-serif;
+  font-size: 20em;
+  text-shadow: -8px 9px #000000;
+  font-family: "Anton", sans-serif;
 }
 
-.btnH{
-	background-color: #cb622e;
-	padding: 10px 20px;
-	color: #ffffff;
-	font-weight: bold;
-	text-decoration: none;
-	margin-top: 40px;
-	width: 290px;
-	height: auto;
-	font-size: 2em;
+.btnH {
+  background-color: #cb622e;
+  padding: 10px 20px;
+  color: #ffffff;
+  font-weight: bold;
+  text-decoration: none;
+  margin-top: 40px;
+  width: 290px;
+  height: auto;
+  font-size: 2em;
 }
 
-.btnH:hover{
-	background-color: #e8a87c;
-	transform: translateY(-10px);
+.btnH:hover {
+  background-color: #e8a87c;
+  transform: translateY(-10px);
 }
