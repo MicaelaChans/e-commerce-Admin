@@ -1,9 +1,11 @@
 import { useState } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { logout } from "../redux/adminSlice";
 import { useDispatch } from "react-redux";
 
 function Sidebar() {
+  const navigate = useNavigate();
+
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
@@ -13,8 +15,7 @@ function Sidebar() {
 
   const handleLogout = () => {
     dispatch(logout(null));
-    localStorage.removeItem("authToken");
-    window.location.href = "/login";
+    navigate("/login");
   };
 
   return (

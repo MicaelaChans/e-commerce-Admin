@@ -2,9 +2,10 @@ import React from "react";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { formatDistanceToNow } from "date-fns";
+import { useSelector } from "react-redux";
 
 function OrdersTable() {
-  const authToken = localStorage.getItem("authToken");
+  const authToken = useSelector(state => state.admin.authToken);
   const [orderList, setOrderList] = useState([]);
 
   useEffect(() => {

@@ -10,7 +10,7 @@ import { formatDistanceToNow } from "date-fns";
 import { removeOrder } from "../redux/orderSlice";
 
 function Orders() {
-  const authToken = localStorage.getItem("authToken");
+  const authToken = useSelector(state => state.admin.authToken);
 
   const dispatch = useDispatch();
   const [orderList, setOrderList] = useState([]);

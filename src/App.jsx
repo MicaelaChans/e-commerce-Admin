@@ -1,4 +1,5 @@
 import Home from "./components/Home";
+import { useSelector } from "react-redux";
 import { Routes, Route, Navigate } from "react-router-dom";
 import NotFound from "./components/NotFound";
 import Login from "./components/Login";
@@ -12,7 +13,7 @@ import Product from "./components/Product"
 
 function App() {
   const PrivateRoute = ({ children }) => {
-    const authToken = localStorage.getItem("authToken");
+    const authToken = useSelector(state => state.admin.authToken);
     if (!authToken) {
       return <Navigate to="/login" />;
     }

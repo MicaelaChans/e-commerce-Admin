@@ -6,9 +6,10 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import axios from "axios";
 import "../css/CreateAdmin.css";
+import { useSelector } from "react-redux";
 
 function StaffPanel() {
-  const authToken = localStorage.getItem("authToken");
+  const authToken = useSelector(state => state.admin.authToken);
   const [showPassword, setShowPassword] = useState(false);
 
   const [adminsList, setAdminList] = useState([]);

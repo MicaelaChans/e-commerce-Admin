@@ -1,11 +1,12 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 import { ToastContainer, toast } from "react-toastify";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 
 function ModifyModal({ showModify, setShowModify, UserID }) {
-  const authToken = localStorage.getItem("authToken");
+  const authToken = useSelector(state => state.admin.authToken);
 
   const [user, setUser] = useState({
     firstname: "",

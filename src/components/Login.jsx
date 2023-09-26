@@ -28,7 +28,6 @@ function Login() {
       if (response.data.token) {
         const id = jwt(response.data.token).sub;
         const username = jwt(response.data.token).username;
-        localStorage.setItem("authToken", response.data.token);
         dispatch(
           login({
             token: response.data.token,

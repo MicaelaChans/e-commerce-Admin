@@ -4,9 +4,10 @@ import Sidebar from "../components/SideBar";
 import Button from "react-bootstrap/Button";
 import OrderModal from "./OrderModal";
 import ModifyModal from "./ModifyModal";
+import { useSelector } from "react-redux";
 
 function Users() {
-  const authToken = localStorage.getItem("authToken");
+  const authToken = useSelector(state => state.admin.authToken);
 
   const [userList, setUserList] = useState([]);
   const [openModifyModal, setOpenModifyModal] = useState({});

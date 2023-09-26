@@ -4,9 +4,10 @@ import { ToastContainer } from 'react-toastify';
 import "../css/Products.css"
 import axios from 'axios';
 import { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
 
 function Product() {
-	const authToken = localStorage.getItem("authToken");
+	const authToken = useSelector(state => state.admin.authToken);
 	const [products, setProducts] = useState([]);
 
 	useEffect(() => {

@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 import { ToastContainer, toast } from "react-toastify";
 import Modal from "react-bootstrap/Modal";
 import { formatDistanceToNow } from "date-fns";
@@ -7,7 +8,7 @@ import { formatDistanceToNow } from "date-fns";
 function OrderModal({ showOrders, setShowOrders, UserID }) {
   const [userOrders, setUserOrders] = useState([]);
   const [selectedOrder, setSelectedOrder] = useState(null);
-  const authToken = localStorage.getItem("authToken");
+  const authToken = useSelector(state => state.admin.authToken);
   const [productList, setProductList] = useState([]);
   useEffect(() => {
     const getUserOrders = async () => {
