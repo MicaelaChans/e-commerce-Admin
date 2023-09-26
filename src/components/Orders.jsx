@@ -58,7 +58,7 @@ function Orders() {
         <section className="home">
           <div className="text">Orders - Dashboard</div>
 
-          <div className="container letters">
+          <div className="container">
             <table className="table table-dark table-hover mt-3 text-center">
               <thead>
                 <tr>

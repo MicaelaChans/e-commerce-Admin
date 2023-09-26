@@ -7,7 +7,7 @@ function Notifications() {
       <Sidebar />
       <section className="home">
         <div className="text">Notifications</div>
-        <div className="container letters">
+        <div className="container">
           <div className="container mt-3 text center"></div>
         </div>
       </section>

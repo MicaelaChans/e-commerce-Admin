@@ -8,7 +8,7 @@ function Revenue() {
       <Sidebar />
       <section className="home">
         <div className="text">Revenue</div>
-        <div className="container letters">
+        <div className="container">
           <div className="container mt-3 text center"></div>
           <RevenueCards />
         </div>

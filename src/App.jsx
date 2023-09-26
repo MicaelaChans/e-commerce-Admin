@@ -8,6 +8,7 @@ import Users from "./components/Users";
 import Analytics from "./components/Analytics";
 import Revenue from "./components/Revenue";
 import Notifications from "./components/Notifications";
+import Product from "./components/Product"
 
 function App() {
   const PrivateRoute = ({ children }) => {
@@ -59,6 +60,14 @@ function App() {
           element={
             <PrivateRoute>
               <Orders />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/products"
+          element={
+            <PrivateRoute>
+              <Product/>
             </PrivateRoute>
           }
         />

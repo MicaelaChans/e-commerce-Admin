@@ -21,7 +21,6 @@ function OrderModal({ showOrders, setShowOrders, UserID }) {
           }
         );
         setUserOrders(response.data);
-        console.log(response.data);
       } catch (error) {
         console.error(error);
       }
@@ -34,7 +33,6 @@ function OrderModal({ showOrders, setShowOrders, UserID }) {
           },
         });
         setProductList(response.data);
-        console.log(response.data);
       } catch (error) {
         console.error(error);
       }
@@ -58,7 +56,6 @@ function OrderModal({ showOrders, setShowOrders, UserID }) {
       console.log(error);
     }
   };
-
   return (
     <Modal
       show={showOrders}
@@ -109,7 +106,7 @@ function OrderModal({ showOrders, setShowOrders, UserID }) {
                       }
                     })}
                   </td>
-                  <td>{order.address}</td>
+                  <td>{userOrders[index].user.address}</td>
                   <td>{order.state}</td>
                   <td>
                     <button onClick={() => handleOrderDetails(order.id)}>
@@ -123,7 +120,6 @@ function OrderModal({ showOrders, setShowOrders, UserID }) {
         </div>
       </Modal.Body>
 
-      {/* Aquí puedes mostrar los detalles de la orden en un modal adicional */}
       {selectedOrder && (
         <Modal
           show={!!selectedOrder}
@@ -140,7 +136,7 @@ function OrderModal({ showOrders, setShowOrders, UserID }) {
           </Modal.Header>
           <Modal.Body>
             <h5>Due Date: {selectedOrder.dueDate}</h5>
-            <h5>Address: {selectedOrder.address}</h5>
+            <h5>Address: {selectedOrder.user.address}</h5>
             <h5>Progress: {selectedOrder.progress}</h5>
             <h5>Products:</h5>
             <ul>
