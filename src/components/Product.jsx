@@ -27,6 +27,8 @@ function Product() {
 		getProducts();
 	}, [authToken]);
 
+	console.log(products)
+
 	return (
 		<>
 			<div className="container ">
@@ -133,9 +135,7 @@ function Product() {
 											</td>
 											<td>{product.stock}</td>
 											<td>{product.price}</td>
-											<td>
-												{/* {product.category} */}
-											</td>
+											<td>{product.category.name}</td>
 											<td className="d-flex justify-content-center gap-3">
 												<div>
 													<i className="bi bi-pencil text-white"></i>
