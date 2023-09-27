@@ -7,6 +7,7 @@ import { login } from "../redux/adminSlice";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import jwt from "jwt-decode";
+import { useEffect } from "react";
 
 function Login() {
   const [username, setUsername] = useState("");
@@ -54,6 +55,11 @@ function Login() {
   const toggleShowPassword = () => {
     setShowPassword(!showPassword);
   };
+
+  useEffect(() => {
+    setUsername("admin");
+    setPassword("admin");
+  }, []);
 
   return (
     <>
