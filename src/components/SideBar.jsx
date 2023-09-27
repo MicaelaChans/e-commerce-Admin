@@ -55,7 +55,7 @@ function Sidebar() {
               </NavLink>
             </li>
 
-            <li className="nav-link">
+            {/* <li className="nav-link">
               <NavLink to="/notifications" className="text-decoration-none">
                 <div id="a">
                   <i className="bx bx-bell icon bx-tada-hover"></i>
@@ -80,7 +80,7 @@ function Sidebar() {
                   <span className="text nav-text">Analytics</span>
                 </div>
               </NavLink>
-            </li>
+            </li> */}
 
             <li className="nav-link">
               <NavLink to="/products" className="text-decoration-none">
