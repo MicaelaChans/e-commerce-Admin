@@ -98,6 +98,7 @@ function Orders() {
                             className="bi bi-pen text-white iconUyR fs-3"
                             onClick={() => setShowUpdate(true)}
                           ></i>
+
                           <Modal
                             show={showUpdate}
                             onHide={() => setShowUpdate(false)}
@@ -114,12 +115,11 @@ function Orders() {
                             <Modal.Body>
                               <div className="container">
                                 <h6>Products:</h6>
-                                {order.products.map((product) => {
-                                  <div key={product.id}>
-                                    <p>{product.name}</p>
-                                  </div>;
+                                {order.products.map((product, productIndex) => {
+                                  return (
+                                    <div key={productIndex}>{product.name}</div>
+                                  );
                                 })}
-
                                 {order.state}
                                 <div
                                   className={`progress ${getClassNameState(
