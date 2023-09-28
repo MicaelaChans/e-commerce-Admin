@@ -111,7 +111,12 @@ export default function BarCharts() {
     <div className="chart-productos rounded">
       <BarChart
         dataset={dataset}
-        xAxis={[{ scaleType: "band", dataKey: "month" }]}
+        xAxis={[
+          {
+            scaleType: "band",
+            dataKey: "month",
+          },
+        ]}
         series={[
           {
             dataKey: "london",
