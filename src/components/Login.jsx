@@ -109,10 +109,7 @@ function Login() {
                   Forgot password? <Link to="#">Contact an admin</Link>
                 </p>
                 <p>
-                  Go to:{" "}
-                  <Link to="https://e-commerce-front-two.vercel.app/">
-                    Drachen
-                  </Link>
+                  Go to: <Link to="https://drachen.vercel.app/">Drachen</Link>
                 </p>
               </div>
             </form>
