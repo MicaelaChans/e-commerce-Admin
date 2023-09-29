@@ -91,7 +91,7 @@ function Product() {
     try {
       // const response = await axios({
       // 	method: "DELETE",
-      // 	url: `http://localhost:8000/products/${productId}`,
+      // 	url: `${apiUrl}/products/${productId}`,
       // 	headers: {
       // 		Authorization: `Bearer ${authToken}`,
       // 	},
