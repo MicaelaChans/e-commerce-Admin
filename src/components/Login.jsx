@@ -8,6 +8,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import jwt from "jwt-decode";
 import { useEffect } from "react";
+import { Link } from "react-router-dom";
 
 function Login() {
   const [username, setUsername] = useState("");
@@ -104,7 +105,13 @@ function Login() {
               <button>Log in</button>
               <div className="Subtext">
                 <p>
-                  Forgot password? <a href="#">Contact an admin</a>
+                  Forgot password? <Link to="#">Contact an admin</Link>
+                </p>
+                <p>
+                  Go to:{" "}
+                  <Link to="https://e-commerce-front-two.vercel.app/">
+                    Drachen
+                  </Link>
                 </p>
               </div>
             </form>
