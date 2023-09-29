@@ -11,6 +11,7 @@ import { removeOrder } from "../redux/orderSlice";
 
 function Orders() {
   const authToken = useSelector((state) => state.admin.authToken);
+  const apiUrl = import.meta.env.VITE_APP_API_URL;
 
   const dispatch = useDispatch();
   const [orderList, setOrderList] = useState([]);
@@ -23,7 +24,7 @@ function Orders() {
       try {
         const response = await axios({
           method: "GET",
-          url: "http://localhost:8000/orders",
+          url: `${apiUrl}/orders`,
           headers: {
             Authorization: `Bearer ${authToken}`,
           },

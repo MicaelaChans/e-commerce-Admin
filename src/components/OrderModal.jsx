@@ -8,19 +8,17 @@ import { formatDistanceToNow } from "date-fns";
 function OrderModal({ showOrders, setShowOrders, UserID }) {
   const [userOrders, setUserOrders] = useState([]);
   const [selectedOrder, setSelectedOrder] = useState(null);
-  const authToken = useSelector(state => state.admin.authToken);
+  const authToken = useSelector((state) => state.admin.authToken);
   const [productList, setProductList] = useState([]);
+  const apiUrl = import.meta.env.VITE_APP_API_URL;
   useEffect(() => {
     const getUserOrders = async () => {
       try {
-        const response = await axios.get(
-          `http://localhost:8000/users/${UserID}/orders`,
-          {
-            headers: {
-              Authorization: `Bearer ${authToken}`,
-            },
-          }
-        );
+        const response = await axios.get(`${apiUrl}/users/${UserID}/orders`, {
+          headers: {
+            Authorization: `Bearer ${authToken}`,
+          },
+        });
         setUserOrders(response.data);
       } catch (error) {
         console.error(error);
@@ -28,7 +26,7 @@ function OrderModal({ showOrders, setShowOrders, UserID }) {
     };
     const getProducts = async () => {
       try {
-        const response = await axios.get(`http://localhost:8000/products`, {
+        const response = await axios.get(`${apiUrl}/products`, {
           headers: {
             Authorization: `Bearer ${authToken}`,
           },
@@ -44,14 +42,11 @@ function OrderModal({ showOrders, setShowOrders, UserID }) {
 
   const handleOrderDetails = async (orderId) => {
     try {
-      const response = await axios.get(
-        `http://localhost:8000/orders/${orderId}`,
-        {
-          headers: {
-            Authorization: `Bearer ${authToken}`,
-          },
-        }
-      );
+      const response = await axios.get(`${apiUrl}/orders/${orderId}`, {
+        headers: {
+          Authorization: `Bearer ${authToken}`,
+        },
+      });
       setSelectedOrder(response.data);
     } catch (error) {
       console.log(error);

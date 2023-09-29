@@ -14,6 +14,7 @@ function Login() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
+  const apiUrl = import.meta.env.VITE_APP_API_URL;
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -22,7 +23,7 @@ function Login() {
 
     try {
       const response = await axios({
-        url: "http://localhost:8000/tokens/admin",
+        url: `${apiUrl}/tokens/admin`,
         method: "POST",
         data: { username, password },
       });

@@ -6,7 +6,8 @@ import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 
 function ModifyModal({ showModify, setShowModify, UserID }) {
-  const authToken = useSelector(state => state.admin.authToken);
+  const authToken = useSelector((state) => state.admin.authToken);
+  const apiUrl = import.meta.env.VITE_APP_API_URL;
 
   const [user, setUser] = useState({
     firstname: "",
@@ -21,14 +22,11 @@ function ModifyModal({ showModify, setShowModify, UserID }) {
   useEffect(() => {
     const getUser = async () => {
       try {
-        const response = await axios.get(
-          `http://localhost:8000/users/${UserID}`,
-          {
-            headers: {
-              Authorization: `Bearer ${authToken}`,
-            },
-          }
-        );
+        const response = await axios.get(`${apiUrl}/users/${UserID}`, {
+          headers: {
+            Authorization: `Bearer ${authToken}`,
+          },
+        });
         setUser(response.data);
       } catch (error) {
         console.error(error);
@@ -40,7 +38,7 @@ function ModifyModal({ showModify, setShowModify, UserID }) {
   const Modifie = async () => {
     try {
       const response = await axios.patch(
-        `http://localhost:8000/users/${UserID}`,
+        `${apiUrl}/users/${UserID}`,
         {
           firstname: user.firstname,
           lastname: user.lastname,

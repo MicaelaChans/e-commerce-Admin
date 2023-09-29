@@ -5,15 +5,16 @@ import { formatDistanceToNow } from "date-fns";
 import { useSelector } from "react-redux";
 
 function OrdersTable() {
-  const authToken = useSelector(state => state.admin.authToken);
+  const authToken = useSelector((state) => state.admin.authToken);
   const [orderList, setOrderList] = useState([]);
+  const apiUrl = import.meta.env.VITE_APP_API_URL;
 
   useEffect(() => {
     const getOrders = async () => {
       try {
         const response = await axios({
           method: "GET",
-          url: "http://localhost:8000/orders",
+          url: `${apiUrl}/orders`,
           headers: {
             Authorization: `Bearer ${authToken}`,
           },

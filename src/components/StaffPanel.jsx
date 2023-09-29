@@ -9,8 +9,9 @@ import "../css/CreateAdmin.css";
 import { useSelector } from "react-redux";
 
 function StaffPanel() {
-  const authToken = useSelector(state => state.admin.authToken);
+  const authToken = useSelector((state) => state.admin.authToken);
   const [showPassword, setShowPassword] = useState(false);
+  const apiUrl = import.meta.env.VITE_APP_API_URL;
 
   const [adminsList, setAdminList] = useState([]);
   const [firstname, setFirstname] = useState("");
@@ -24,7 +25,7 @@ function StaffPanel() {
     try {
       const response = await axios({
         method: "GET",
-        url: "http://localhost:8000/admins",
+        url: `${apiUrl}/admins`,
         headers: {
           Authorization: `Bearer ${authToken}`,
         },
@@ -39,7 +40,7 @@ function StaffPanel() {
     e.preventDefault();
     const response = await axios({
       method: "POST",
-      url: `http://localhost:8000/admins`,
+      url: `${apiUrl}/admins`,
       data: { firstname, lastname, username, email, password },
       headers: {
         Authorization: `Bearer ${authToken}`,
@@ -67,7 +68,7 @@ function StaffPanel() {
     try {
       const response = await axios({
         method: "DELETE",
-        url: `http://localhost:8000/admins/${adminId}`,
+        url: `${apiUrl}/admins/${adminId}`,
         headers: {
           Authorization: `Bearer ${authToken}`,
         },

@@ -7,7 +7,8 @@ import ModifyModal from "./ModifyModal";
 import { useSelector } from "react-redux";
 
 function Users() {
-  const authToken = useSelector(state => state.admin.authToken);
+  const authToken = useSelector((state) => state.admin.authToken);
+  const apiUrl = import.meta.env.VITE_APP_API_URL;
 
   const [userList, setUserList] = useState([]);
   const [openModifyModal, setOpenModifyModal] = useState({});
@@ -18,7 +19,7 @@ function Users() {
       try {
         const response = await axios({
           method: "GET",
-          url: "http://localhost:8000/users",
+          url: `${apiUrl}/users`,
           headers: {
             Authorization: `Bearer ${authToken}`,
           },
