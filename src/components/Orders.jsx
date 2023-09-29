@@ -16,6 +16,7 @@ function Orders() {
   const [orderList, setOrderList] = useState([]);
   const [showUpdate, setShowUpdate] = useState(false);
   const [productList, setProductList] = useState([]);
+  const states = ["Pending", "Paid", "On the way", "Delivered"];
 
   useEffect(() => {
     const getOrders = async () => {
@@ -35,8 +36,8 @@ function Orders() {
     getOrders();
   }, [authToken]);
 
-  const handleRemoveOrder = (orderId) => {
-    dispatch(removeOrder(orderId));
+  const handleRemoveOrder = (orderId, order) => {
+    setSelectedOrder(order);
   };
 
   function getClassNameState(state) {
@@ -101,7 +102,10 @@ function Orders() {
 
                           <Modal
                             show={showUpdate}
-                            onHide={() => setShowUpdate(false)}
+                            onHide={() => {
+                              setShowUpdate(false);
+                              setSelectedOrder(null);
+                            }}
                             animation={false}
                             size="lg"
                             aria-labelledby="contained-modal-title-vcenter"
@@ -120,13 +124,16 @@ function Orders() {
                                     <div key={productIndex}>{product.name}</div>
                                   );
                                 })}
-                                {order.state}
-                                <div
-                                  className={`progress ${getClassNameState(
-                                    order.state
-                                  )}`}
-                                  role="progressbar"
-                                ></div>
+                                <h6 className="mt-3">State:</h6>
+                                <select name="state" id="state">
+                                  {states.map((state, index) => {
+                                    return (
+                                      <option key={index} value={index + 1}>
+                                        {state}
+                                      </option>
+                                    );
+                                  })}
+                                </select>
                               </div>
                             </Modal.Body>
                             <Modal.Footer className=" d-flex ">
@@ -156,7 +163,7 @@ function Orders() {
                         <div>
                           <i
                             className="bi bi-trash3 text-white iconUyR fs-3"
-                            onClick={() => handleRemoveOrder}
+                            onClick={() => handleRemoveOrder(order.id, order)}
                           ></i>
                         </div>
                       </td>
